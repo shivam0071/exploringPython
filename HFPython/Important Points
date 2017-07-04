@@ -1,0 +1,266 @@
+CHAPTER 1
+
+BIF - built in Functions
+dir(__builtins__) # to see all BIFS
+
+loop or condition body is called a Suite
+
+Suite” - a block of Python code, which
+is indented to indicate grouping.
+
+
+
+Code in your main Python program (and within IDLE’s shell) is associated
+with a namespace called __main__.
+
+All code in Python is associated with a namespace.
+When you put your code into its own
+module, Python automatically creates a namespace with the same name as
+your module. So, the code in your module is associated with a namespace
+called nester.
+
+list.append() appends in the last
+list.insert(4,'Shaan')
+
+****************************************************************************
+
+CHAPTER 2
+
+A module is simply a text file that contains Python code. The main
+requirement is that the name of the file needs to end in .py
+
+Q: How do I know where the Python
+modules are on my computer?
+A: Ask IDLE. Type import sys;
+sys.path (all on one line) into the IDLE
+prompt to see the list of locations that your
+Python interpreter searches for modules.
+
+Prepare your distribution
+In order to share your newly created module, you need to prepare a
+distribution. This is the Python name given to the collection of files that
+together allow you to build, package, and distribute your module.
+Once a distribution exists, you can install your module into your local copy
+of Python, as well as upload your module to PyPI to share with the world.
+
+
+3 Steps to Create a distribution
+
+1st make a module -
+write a function and save it in a .py file (the name is the name of the module)
+
+2nd Make a folder (name can be different_
+make a new python file and do this
+
+from distutils.core import setup   #distutils helps to make distribution
+setup(
+	name = 'nester',
+	version = '1.0.0',
+	py_modules = ['nester_ch2'],
+	author = 'Shaan',
+	author_email = 'shanu.linkinpark@gmail.com',
+	description = 'A simple printer of nested lists'
+)
+#use URL as well
+
+3rd run the setup.py in the terminal
+
+>> python setup.py sdist
+install the module
+>>python setup.py install
+
+done
+now u can se some dist build folders ,,a manifest file etc
+
+
+****************************************************************************************
+
+Chapter 3 - Files and Exception
+
+Data is external to your program
+
+Most of your programs conform to the input-process-output model: data comes
+in, gets manipulated, and then is stored, displayed, printed, or transferred.
+
+
+The basic input mechanism in Python is line based: when read into your
+program from a text file, data arrives one line at a time.
+
+Python’s open() BIF lives to interact with files. When combined with a for
+statement, reading files is straightforward
+
+The split() method returns a list of strings, which are assigned to a list of
+target identifiers. This is known as multiple assignment:
+
+
+The traceback is Python’s way of telling you that something unexpected has
+occurred during runtime. In the Python world, runtime errors are called
+exceptions.
+
+Well spotted. It turns out that there are two types of list in Python: those that can change (enclosed in square brackets) and those that
+cannot be changed once they have been created (enclosed in regular brackets). The latter is an immutable list, more commonly referred
+to as a tuple
+
+When you have a situation where you might be expected to provide code, but
+don’t need to, use Python’s pass statement (which you can think of as the
+empty or null statement.)
+
+if os.path.exists('sketch.txt'):   #to check duhh
+
+
+**********************************************************************************************
+Chapter 4
+
+open can be used as both reading and writing
+
+strip() removes whitespace
+
+When you use the open() BIF to work with a disk file, you can specify an
+access mode to use. By default, open() uses mode r for reading, so you don’t
+need to specify it. To open a file for writing, use mode w:
+
+out = open("data.out", "w")
+
+By default, the print() BIF uses standard output (usually the screen) when
+displaying data. To write data to a file instead, use the file argument to
+specify the data file object to use:
+
+print("Norwegian Blues stun easily.", file=out)
+
+When you’re done, be sure to close the file to ensure all of your data is written
+to disk. This is known as flushing and is very important:
+
+out.close()
+
+
+When you use access mode w, Python opens your named file
+for writing. If the file already exists, it is cleared of its contents, or
+clobbered. To append to a file, use access mode a, and to open a
+file for writing and reading (without clobbering), use w+. If you
+try to open a file for writing that does not already exist, it is first
+created for you, and then opened for writing.
+
+The locals() BIF returns a collection of
+names defined in the current scope. Let’s exploit this BIF to only invoke close() when it is safe to do so:
+
+
+The with statement takes advantage of a Python technology
+called the context management protocol.
+
+Standard Output The default place where your code writes its
+data when the “print()” BIF is used. This is typically the screen.
+In Python, standard output is referred to as “sys.stdout” and
+is importable from the Standard Library’s “sys” module.
+
+
+Python ships with a standard library called pickle, which can save and load
+almost any Python data object, including lists.
+Once you pickle your data to a file, it is persistent and ready to be read into
+another program at some later date/time:
+
+
+Using pickle is straightforward: import the required module, then use
+dump() to save your data and, some time later, load() to restore it. The
+only requirement when working with pickled files is that they have to be
+opened in binary access mode:
+
+print(value, sep=' ', end='\n', file=sys.stdout).
+
+
+**************************************************************************
+Chapter 5
+
+data.sort() #sorts the list and replaces the original list
+sorted(data) #sorts but keeps the original
+
+
+You’ve already seen method chaining, and now it’s time to say
+“hello” to function chaining. Function chaining allows you to apply
+a series of functions to your data. Each function takes your data,
+performs some operation on it, and then passes the transformed
+data on to the next function. Unlike method chains, which read
+from left to right, function chains read from right to left (just to
+keep things interesting).
+
+
+reverse=True for descending order
+
+Comprehending lists - creating a new list from an existing list
+like this
+clean_mikey = [sanitize(each_t) for each_t in mikey]
+
+Remove duplicates with sets data structures
+The overriding characteristics of sets in Python are that the data items in a set
+are unordered and duplicates are not allowed.
+using
+
+distances = set()
+distances = {10.6, 11, 8, 10.6, "two", 7}
+ignores the 10.6
+hence
+distances = set(james)
+
+
+Factory Function: A factory function is used to make new
+data items of a particular type. For instance, “set()” is
+a factory function because it makes a new set. In the
+real world, factories make things, hence the name.
+
+
+******************************************************************8
+chapter 6
+
+Dictionary A built-in data structure (included with
+Python) that allows you to associate data with keys, as
+opposed to numbers. This lets your in-memory data
+closely match the structure of your actual data.
+
+The Python dictionary is known by different names in other programming languages. If you hear other
+programmers talking about a “mapping,” a “hash,” or an “associative array,” they are talking about a “dictionary.”
+
+Name  "Sarah Sweeney"
+DOB "2002-6-17"
+Times  [2:58,2.58,2:39,2-25,2-55,2:54,2.18,2:55,2:55,2:22,2-21,2.22]
+
+
+cleese = {}
+palin = dict()
+cleese['Name'] = 'John Cleese'
+cleese['Occupations'] = ['actor', 'comedian', 'writer', 'film producer']
+ palin = {'Name': 'Michael Palin', 'Occupations': ['comedian', 'actor', 'writer', 'tv']}
+
+cleese['Occupations'][-1]
+
+
+CLASS
+Within the object-oriented world, your code is often referred to as the class’s
+methods, and your data is often referred to as its attributes. Instantiated
+data objects are often referred to as instances
+
+Python uses class to create objects. Every defined class has a special method
+called __init__(), which allows you to control how objects are initialized.
+Methods within your class are defined in much the same way as functions,
+that is, using def. Here’s the basic form:
+
+class Athlete:
+def __init__(self):
+# The code to initialize a "Athlete" object.
+
+Unlike in C++-inspired languages, Python has no notion of defining a
+constructor called “new.” Python does object contruction for you, and then
+lets you customize your object’s initial state using the __init__() method.
+
+
+The importance of self
+To confirm: when you define a class you are, in effect, defining a custom factory
+function that you can then use in your code to create instances:
+
+a = Athlete()
+
+When Python processes this line of code, it turns the factory function call into
+the following call, which identifies the class, the method (which is automatically
+set to __init__()), and the object instance being operated on:
+
+Athlete().__init__(a)
+
+Ever y method’s first argument is self
