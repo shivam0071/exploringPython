@@ -1,0 +1,932 @@
+FIX protocol - Financial Information eXchange
+
+
+Message Type 35=
+
+Value
+
+8 - Execution
+
+D - Order
+
+3 - Session Reject
+
+
+39 = 0 
+
+
+
+
+
+There are many python stuff which i think i am going to forget
+
+
+Closure
+
+Decorator
+
+ABC
+
+Iterator
+
+Generator
+
+Lambda
+
+Map, Filter, Reduce
+
+Using Super
+
+Properties
+
+Coroutines
+
+Protocols
+
+Threading
+
+All the syntax of list comprehinsion and map reduce lambda etc
+
+static methods 
+
+class methods
+
+
+
+Python is dynamic Type -- variable types are given at run time and not at compile time (java,c)
+
+
+Slicing doesn't gives array index out of range
+
+
+
+if-else -  Another way
+
+
+a = 23 if x > 20 else 10
+
+or
+
+print ('hi') if a==b else print('bye')
+
+
+
+Strings
+
+
+Strings are immutable(that means it doesn't support str[1] = e ) {this is trying to make changes to an alphabet residing in that memory location...which we can't...)
+
+You have to make a new string...
+
+
+Supports 
+
+str*3 -- strstrstr
+
+str + str2 
+
+("shivam"" is cool") == 'shivam is cool'
+
+slicing
+
+str.count('a')
+
+str.strip() removes the whitespaces,
+
+
+str.split(sep,maxsplit)
+
+#returns a list
+
+
+"-".join(str) # S-h-i-v-a-m
+
+(works with list of strings aswell )
+
+
+
+LIST methods :- 
+
+
+ls.count('shiv')
+
+ls2 = ls.copy() #creates a different copy
+
+ls.reverse() reverses the original list
+
+ls.extend('shivam') #s,h,i,v,a,m
+
+ls.append('46')
+
+ls.pop()/ls.pop(index)
+
+ls.remove(value)
+
+del ls
+
+ls.index('s')
+
+ls.insert(index,value)
+
+ls.sort(key=len , reverse= False)#changes the original list(returns none)
+
+sorted(list,key,reverse) #returns sorted list
+
+you can make ur own functions in keys
+
+ls[::-1]  
+
+or 
+
+lambda x : x[1] --> sorts based on 2nd element in a list of list 
+
+
+ls._setitem_(key,value) # replaces the content
+
+
+
+ls._contains_(value) #True or False
+
+
+there is another way by which we can remove a list element and it doesn't returns a value(different than pop)
+
+
+del ls[0]
+
+we can even use slicing in this
+
+
+
+Methods like insert(),remove(), sort() that modify the list have no return value printed - they return default None
+
+This is a design principal for all mutable data structures in Python
+
+
+ls1 + ls2 works same as extend() but it doesn't changes the original list
+
+
+
+Tuples :
+
+Tuples are immutable. i.e there are no insert, append or remove methods
+
+u can't
+
+tu[0] = 77 
+
+
+The elements can be accessed by unpacking,indexing,,where as lists are generally mutable and are accessed by iterating over the list
+
+
+tuple  = ()
+
+tup = (1,) #  for 1 item only
+
+
+Unpacking 
+
+t (1,2,3)
+
+a,b,c = t
+
+
+
+zip() returns a zip object which further can be converted into list(list of tuples) or a dict
+
+
+list(zip([1,2,3,4,5],[6,7,8,9,0]))
+
+element wise [(1,6) and so on]
+
+
+ignores the values if lists are of unmatching size
+
+
+
+also we can use zip like
+
+zip([[1,2,3],[4,5,6]])
+
+OR
+
+zip(*SequencelikeaboveOne)
+
+
+'Shivam' [::-1] returns  mavihS
+
+[::1] here 1 means index by 1 unit
+
+[::2] means index by 2 units  - Sia (output)
+
+
+
+Sets:-
+
+a set is an unordered collection with no duplicate elements. basic uses includes membership testing and eliminating duplicate entries
+
+
+Supports union intersection difference and symmetric difference
+
+s = set() OR s = {1}
+
+
+a = set('abracadabra')
+
+b = set('alacazam')
+
+
+a & b -- Intersection ( letters both in a and b)
+
+
+a | b -- Union (all the letters)
+
+
+a - b -- A not in B
+
+
+a ^ b -- unique letters in A B (letters in a or b but not both)
+
+
+also supports set comprehinsion 
+
+using { expr loop condition } 
+
+
+
+
+
+
+
+If u want to know all the functions,variables,modules in a module use dir(moduleName) command 
+
+
+dir() -- shows the variables and functions used in interactive shell
+
+
+ dir() doesn't shows the inbuilt functions.
+
+for that
+
+import builtins
+
+dir(builtins)
+
+ 
+
+Dictionaries: are Mutable
+
+where keys are of immutable types
+
+
+A dictionary is an unordered set of key : Value pairs where keys are unique
+
+
+
+
+
+Key Value Pairs 
+
+a= {1:2,3:4,5:6}
+
+iterates over keys
+
+1 in a - Output : True
+
+6 in a - False
+
+
+a.get(key) #gets the value
+
+**kwargs returns a dictionary
+
+
+a.update(dict)  adds a new dictionary to the current
+
+
+if you try to override a key then the key with last value is only accepted...others are not considered
+
+
+basic operations
+
+
+tel = {1:6,3:7}
+
+tel[8] = 9
+
+del [1] 
+
+3 in tel 
+
+True
+
+di = dict(Name = 'Shivam' , Class = 10)
+
+dict comprehinsion is also possible
+
+
+
+
+Looping Stuff:
+
+when you look over a list or something,try to loop over its copy...as modifying the current list may cause some issues with the loop (see docs)
+
+so use 
+
+for i in list[:] :
+
+
+now you can modify the list freely
+
+
+use enumerate for index and value
+
+for k,v in enumerate (list):
+
+
+To loop over two or more sequences at the same time use zip()
+
+for q ,a in zip(questions,answers) 
+
+    print(' {0} -- {1}'.format(q,a))
+
+
+range()
+
+In many ways the object returned by range() behaves as if is a list, but in fact it isn't. It is an object which returns the successive items of the desired sequence when u iterate over it, but it doesn't really make the list, thus SAVING SPACE 
+
+Now when we iterate over for x in range (10) then the value of x is retained #x = 9 but using LIST Comprehinsion this can be avoided
+
+
+Iterator and Iterables :
+
+Iterators - For statement, list()
+
+they iterate over Iterables
+
+a list() creates lists from iterables
+
+
+To iterate in reverse order u use
+
+for i in reversed(range(1,10,2)):
+
+
+
+Comparison Operators :-
+
+in and not in checks whether a value occurs in a sequence. 
+
+is and is not compare whether 2 objs are really the same object
+
+
+Numerical Operators -- More than in is 
+
+Not - Highest priority
+
+Or - Lowest
+
+
+short circuit operations are performed left to right  a and b or c 
+
+
+
+
+LIST COMPREHINSION: -
+
+ A list comprehinsion  cosists of bracket containing an expression followed by a for clause, then zero or more for or if clauses.
+
+The result will be a new list resulting from evaluating the expression in context of the for and if clause which follow it....eg-
+
+This listcomp combines the elements of two lists if they are not equal
+
+
+[(x,y) for x in [1,2,3] for y in [3,1,4] if x!=y]
+
+
+#[(1,3),(1,4),(2,3),(2,1),(2,4),(3,1),(3,4)]
+
+
+we can even use a list comprehinsion with in a list comprehinsion
+
+
+[[row[i] for row in matrix] for i in range (4)]
+
+
+
+We can even use ternary operator in list comprehinsion
+
+
+--> a if True else False
+
+[ [ 1 if j==i else 0 for i in range(5)]  for i in range(5)] 
+
+
+1,0,0,0,0
+
+0,1,0,0,0
+
+0,0,1,0,0
+
+0,0,0,1,0
+
+0,0,0,0,1
+
+
+COOL Right?
+
+
+MODULES:-
+
+Any file that ends with .py is a module
+
+
+import modulename
+
+Or
+
+from module import function_name
+
+
+_name_ gives the module name
+
+_main_  --> the top level module
+
+ 
+
+if _name_ = '_main_':
+
+    pass
+
+
+Whenever we write import that the interpreter first looks in the built in modules if the name is not found ,it searches for a file named spam.py in a list of directories given by the variable sys.path
+
+
+sys.path is initialized from these locations:
+
+The directory containing the input script
+
+PYTHONPATH 
+
+Installation dependent default
+
+
+
+Packages - they are the folders which contains a no of modules or other packages
+
+
+so in the top level of the directory there is a file with name 
+
+_init_.py it tells that all these folders qre packages
+
+it also contains a variable named _all_ which tells which modules to include when we call
+
+from abc import * 
+
+now only modules mentioned in the file gets imported
+
+
+
+
+INPUT AND OUTPUT
+
+
+str() and repr() converts objects to string however repr is more readable to interpreter and str() to human
+
+
+str('Hi')
+
+'Hi'
+
+repr('Hi')
+
+"'Hi'"
+
+
+Formatting :
+
+str.format()
+
+Syntax :
+
+'{0} ---> {1} cool '.format('Shaan','Cool')
+
+
+
+for x in range (1,11):
+
+     print (repr(x).rjust(2),repr(x*x).rjust(3), end =  ' ')
+
+     print(repr(x*x*x).rjust(4))
+
+
+1.    1.     1
+
+2.    4.     8
+
+
+
+OR
+
+
+for x in range(1,11):
+
+     print ('{0:2d} {1:3d} {2:4d}'.format(x,xx*x,x*x*x)
+
+
+rjust- right justified (moves to right space in left)
+
+str.center() -- for center
+
+str.zfill()
+
+'-3.14'.zfill(7)
+
+#-003.14
+
+
+
+Keyword args can also be used in Format
+
+'{Shaan}'.format(Shaan:'cool')
+
+
+An optional : and format specifier can follow the field name {0:3f}
+
+
+Dictionaries - {0[key]:d} 
+
+d - decimal
+
+f - float
+
+
+
+Reading and Writing files
+
+open() returns a file object
+
+open(filename,mode)
+
+
+f = open ('filenname.txt','w')
+
+
+f.close()
+
+
+w -- write
+
+r -- read 
+
+r+ -- read write
+
+a -- append
+
+b -- binary (images,pickle)
+
+with open (file,w) as file:
+
+    pass
+
+
+No need to close the file here
+
+
+Whenever a file is reas the cursor moves and it stays there so
+
+
+f.read() -- reads the whole file
+
+#cursor is at the end.  '\n' 
+
+f.read() -- '' 
+
+
+f.readline() -- reads a line
+
+f.readlines() -- returns a list
+
+
+file.write(value) --> writes to the file
+
+
+f.tell() --> tells where the cursor is
+
+f.seek(pos, fromWhat)
+
+0--from beggining
+
+1-- from pointer
+
+2-- from end
+
+
+JSON
+
+
+import json
+
+
+file.write() saves the content as string and its hard to write numbers to a file as while reading it we have to convert it back to int..so in order to write numbers,list, tuple or dictionary we can use json module
+
+
+json.dumps([1,2,3,4,5,]
+
+[1,2,3,4,5]
+
+
+or 
+
+json.dump([1,2,3,4,5],file)  -- dump saves to a file
+
+
+and we can get back the data as
+
+ q = json.load(file)
+
+
+json is used for serialisation and deserialization
+
+
+and then can be sent over network to some other computer
+
+
+Pickle is a protocol that can also be used for serialisation and for saving more complex objects..but it is quite insecure and supports only in python
+
+
+
+
+Closure - As the name suggests...closee....secret...so closure retains a value...generally a function that returns a function (fun inside a fun)
+
+
+example
+
+
+def secretMessage(message):
+
+    def innerfun():
+
+           return message
+
+    return innerfun
+
+
+secret = secretMessage ("I am the best")
+
+print (secret())
+
+
+#i am the best
+
+
+
+Decorator
+
+
+decorators are same as closure...they return another function but here is a catch
+
+Here we decorate another function with our returning function
+
+
+So here the function which we decorate becomes another function now for example
+
+
+def hi(random): #takes a function
+
+  print('hi')
+
+  def bye():
+
+       print('bye')
+
+       random()
+
+       print('things are modified now)
+
+   return bye
+
+
+def new():
+
+    print ('i am new')
+
+
+
+new = hi(new) #now the new has become bye
+
+new() #we are calling bye here...
+
+
+it you want to add a parameter 
+
+for example
+
+def new(s):
+
+         print ('i am new',s)
+
+
+then bye become 
+
+def bye(s):
+
+   print('bye')
+
+   random(s)
+
+   print('things are modified now)
+
+
+@hi
+
+def new (s):
+
+   print('this is how its used in real)
+
+
+
+if more than one decorator is used then they are executed bottom to top
+
+
+@makebold
+
+@makeitalic
+
+def hello():
+
+  return "Hello"
+
+
+BIHelloIB
+
+Hello
+
+
+
+
+FUNCTIONS
+
+
+functions vs procedure vs method:
+
+A function returns a value where as a procedure doesn't
+
+
+A method is a function that belongs to an object and is named obj.methodName (obj is object/expression) 
+
+
+
+in python every function returns NONE implicitly...
+
+
+
+When calling a function we use
+
+1.) positional argument (1000,4,5)
+
+2.) Keyword argument(Rs= 1000,rollno= 4)
+
+
+ keyword arguments must follow positional arguments
+
+(100,rollno=4,5) # Error
+
+
+In a function we often give default values to the parameters but Important warning: The default value is evaluated only once. This makes a difference when a default value is mutable object such as a list, dictionary or instances,
+
+Eg- 
+
+
+def f(a,L=[]):
+
+    L.append(a)
+
+    return L
+
+
+print(f(1))    # [1]
+
+print(f(2)).   #[1,2]
+
+print(f(3)).  #[1,2,3]
+
+ 
+
+
+u can avoid this by
+
+def f(a,L=None):
+
+    if L == None:
+
+         L=[]
+
+   L.append(a)
+
+   return L
+
+
+Unpacking Argument Lists:
+
+if args are already in a list or tuples but need to be unpacked for a function call requiring separate positional parameters
+
+eg-
+
+args = [3,6]
+
+list(range(*args))
+
+[3,4,5]
+
+
+in same way dictionaries can deliver keyword arguments with ** operator
+
+
+parrot(**d)
+
+
+
+
+Lambda Functions :
+
+Lambda is an anonymous function
+
+
+y = lambda x: x+1 
+
+y(5)
+
+output - 6
+
+
+Example 1
+
+
+y = lambda x: print('Greater than 3') if x>3 else print ('Less than 3')
+
+
+y(10)
+
+#greater than 3
+
+I used it like this...print from 1-10 except 3,6,9
+
+ls2 = list(filter(lambda x: x%3 , range(1,11))
+
+ 
+
+
+Map Reduce and Filter
+
+
+They are function
+
+They are used with a sequence
+
+
+
+Map: As the name suggests... A map function is used for mapping of a. sequence
+
+
+a = list(map(lambda y: y+2,range(10)) 
+
+
+
+Filter : Filter filters the stuff based on true and false...if something is
+
+0 its False
+
+1 is True
+
+
+b = list (filter(lambda x: x%5 ==0,nlist)
+
+
+
+Reduce :
+
+import functools
+
+Reduce reduces the sequence 
+
+It takes 2 or more ?parameters at a time
+
+
+Example- ls4 = functools.reduce(lambda x,y : x if x> y else y, nlist2)
+
+
+
+Abstract Base Class 
+
+
+Using this we can make a class abstract...we cant instantiate an abstract class
+
+
+to make an abstract class 
+
+import
+
+from abc import ABCmeta, abstractmethod, abstractproperty
+
+
+class Shape(metaclass=ABCmeta):
