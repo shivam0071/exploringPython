@@ -27,4 +27,4 @@ class Pair:
 if __name__ == '__main__':
     p = Pair(44, 'Shivam')
     print(p)
-    print(p.__repr__())  #type p only in python console
+    print(p.__repr__())  # type p only in python console
