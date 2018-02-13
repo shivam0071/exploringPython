@@ -37,5 +37,5 @@ if __name__ == '__main__':
 # It’s important to emphasize that the interpretation of format codes is entirely up
 # to the class itself
 
-# GITHUB CHECK
+# GITHUB CHECK PYCHARM
 
