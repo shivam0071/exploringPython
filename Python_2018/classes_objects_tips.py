@@ -1,7 +1,7 @@
 #11th Feb 2018 6.00 PM
 # Changing the String Representation of Instances
 
-#Teaches -> using in built functions (BIFs) __str__ and __repr__
+# Teaches -> using in built functions (BIFs) __str__ and __repr__
 
 class Pair:
     def __init__(self, x, y):
@@ -13,6 +13,10 @@ class Pair:
 
     def __str__(self):
         return '({0.x!s}, {0.y!s})'.format(self)
+
+
+    # def __repr__(self):
+    #     return 'Pair(%r, %r)' % (self.x, self.y)
 
 # The __repr__() method returns the code representation of an instance, and is usually
 # the text you would type to re-create the instance
@@ -28,3 +32,10 @@ if __name__ == '__main__':
     p = Pair(44, 'Shivam')
     print(p)
     print(p.__repr__())  # type p only in python console
+
+
+#ALSO
+# eval(repr('Shivam'))
+# 'Shivam'
+# repr('Shivam')
+# "'Shivam'"
