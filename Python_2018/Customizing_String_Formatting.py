@@ -36,3 +36,6 @@ if __name__ == '__main__':
 # The __format__() method provides a hook into Python’s string formatting functionality.
 # It’s important to emphasize that the interpretation of format codes is entirely up
 # to the class itself
+
+# GITHUB CHECK
+
