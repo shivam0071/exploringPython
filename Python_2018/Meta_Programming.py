@@ -44,7 +44,7 @@ def timethis(func):
     '''
     Decorator that reports the execution time.
     '''
-    # @wraps(func)
+    @wraps(func)   #Keeps data about the function..such as name and docs...without it...it returns wrapper
     def wrapper(*args, **kwargs):
         start = time.time()
         result = func(*args, **kwargs)
@@ -54,13 +54,35 @@ def timethis(func):
     return wrapper
 
 @timethis
-def countdown(n):   #Modified ...it accepts any arg and kwarg now
+def countdown(n: int):   # Modified ...it accepts any arg and kwarg now,
+                         # Here n: int is an annotation earlier countdown(n) only
     '''
-    countdown
+    countdown function
     '''
     while n > 0:
         n -= 1
 
-countdown(1000000)
+if __name__ == '__main__':
+    #if no decorator was used about countdown then we would do this:
+    # countdown = timethis(countdown)
+    countdown(1000000)
 
-#The decorator keeps the return type same as that of the function
+
+    c = countdown
+    c(1000000)
+    print(c.__name__, c.__doc__, c.__annotations__)  #name is wrapper without wraps and doce is none
+
+
+
+
+    #An important feature of the @wraps decorator is that it makes the wrapped function
+    # available to you in the __wrapped__ attribute. For example, if you want to access the
+    # wrapped function directly
+    print(countdown.__wrapped__(100000), 'Here')
+
+    #The decorator keeps the return type same as that of the function
+
+    #The presence of the __wrapped__ attribute also makes decorated functions properly
+    # expose the underlying signature of the wrapped function
+    from inspect import signature
+    print('Signature - ',signature(countdown))
