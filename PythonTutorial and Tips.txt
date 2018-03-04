@@ -59,6 +59,11 @@ Python is dynamic Type -- variable types are given at run time and not at compil
 Slicing doesn't gives array index out of range
 
 
+Hashable Objects-- All immatable objects are hashable (tuples Strings etc)
+
+
+and all mutable objects are unhashable (list,dict) 
+
 
 if-else -  Another way
 
@@ -105,7 +110,7 @@ str.split(sep,maxsplit)
 
 
 
-LIST methods :- 
+LIST methods :- Implemented as array of pointers to objects(in cpython)
 
 
 ls.count('shiv')
@@ -220,7 +225,7 @@ zip(*SequencelikeaboveOne)
 
 
 
-Sets:-
+Sets:-. Mutable
 
 a set is an unordered collection with no duplicate elements. basic uses includes membership testing and eliminating duplicate entries
 
@@ -235,22 +240,35 @@ a = set('abracadabra')
 b = set('alacazam')
 
 
-a & b -- Intersection ( letters both in a and b)
+a & b -- Intersection ( letters both in a and b) (s.intersection())
 
 
-a | b -- Union (all the letters)
+a | b -- Union (all the letters) (s.union())
 
 
-a - b -- A not in B
+a - b -- A not in B (s.difference())
 
 
-a ^ b -- unique letters in A B (letters in a or b but not both)
+a ^ b -- unique letters in A B (letters in a or b but not both) 
 
 
 also supports set comprehinsion 
 
 using { expr loop condition } 
 
+
+s = set()
+
+
+s.add()
+
+s.pop()
+
+s.clear()
+
+s.copy()
+
+s.update(set(sequence))
 
 
 
@@ -281,6 +299,11 @@ where keys are of immutable types
 A dictionary is an unordered set of key : Value pairs where keys are unique
 
 
+A dictionary is a mapping between a set of keys and values. The keys() method of a
+dictionary returns a keys-view object that exposes the keys. A little-known feature of
+keys views is that they also support common set operations such as unions, intersections,
+
+and differences
 
 
 
@@ -916,7 +939,206 @@ Example- ls4 = functools.reduce(lambda x,y : x if x> y else y, nlist2)
 
 
 
-Abstract Base Class 
+
+CLASSES
+
+Creating a class creates a new "Type" of object
+
+
+Each Class can have :
+
+    Attributes for maintaining its state
+
+     Methods for modifying its state
+
+
+Classes are created at runtime and can be modified further after creation
+
+
+
+Scope and Namespaces:-
+
+
+A namespace is a mapping from names to objects
+
+
+Most namespaces are currently implemented as Python dictionaries,
+
+Example- 
+
+1.) builtin dir names
+
+2.) Global names in modules
+
+3.) Local names in a function invocation
+
+4.) In a sense the set if attributes of an object also formba Namespace
+
+
+the important thing to know about namespaces is that ther is absolutely no relation between names in different namespaces
+
+eg- two different modules may both define q function maximise without confusion -- usere of the module must prefix module name
+
+
+
+Attributes maybe read only or writeable 
+
+Writeable attributes can also be deleted with del statement
+
+del modname.theanswer 
+
+
+Namespaces are created at different moments and have different timelines
+
+
+built-in names - created when python interpreter starts up and is never deleted
+
+
+Global namespace - when module definition is read in normally, also lasts until the interpreter quits
+
+
+Function namespace - created when function is called and deleted when function returns
+
+
+
+Although scopes are determined statically, they are used dynamically. At any time during execution, there are at least three nested scopes whose namespaces are directly accessible:
+
+the innermost scope, which is searched first, contains the local names
+
+the scopes of any enclosing functions, which are searched starting with the nearest enclosing scope, contains non-local, but also non-global names
+
+the next-to-last scope contains the current module’s global names
+
+the outermost scope (searched last) is the namespace containing built-in name.
+
+
+If name is declared global,then all references and assignments go directly to the middle scope containing the module’s global names.
+
+To rebind variables found outside of the innermost scope, the nonlocal statement can be used; if not declared nonlocal, those variables are read-only (an attempt to write to such a variable will simply create a new local variable in the innermost scope, leaving the identically named outer variable unchanged
+
+
+eg - 
+
+
+if no global is mentioned then things gets affected only in the innermost scope
+
+
+example : check in docs
+
+global spam -- creates a spam outside if not created and assigns value to spam of global scope
+
+spam = 6 
+
+To local scope onle
+
+def abc
+
+  nonlocal spam = 8
+
+#Assigns value to the previous scope spam.. can't assign to global scope
+
+
+
+
+Classes --- 
+
+
+Multiple Inheritance:-
+
+attributes are searched from parent class as 
+
+" Depth first, left to right", not searching twice in the same class
+
+
+classDerivedClassName(Base1,Base2,Base3):
+
+ pass
+
+
+if an attribute is not found in derivedclassname, it is searched for in Base1 , then (recursively) in the base classes of base1, if not found then in base2 and so on
+
+
+its still more complex that tht
+
+the MRO(method resolution order):
+
+
+
+Iterators:
+
+Behind the scene a for statement calls iter() on a container object.
+
+This function returns an Iterator object that defines the _next_() which accesse elements in the container one at a time...when no more elements are left it raises a STOPIteration exception which tells the for loop to terminate
+
+
+So this is the iterator protocol now we can add this behaviour to our own classes
+
+
+Define an iter method that returns object with a next method OR if class defines next then iter can return self
+
+
+
+eg-- psudo code
+
+class reverse:
+
+
+    def init(self,data)
+
+         self.data = data
+
+         self.index = len(data)
+
+    
+
+      def _iter_(self):
+
+           return self
+
+
+       def _next_(self):
+
+             if self.index ==0
+
+                   raise StopIteration
+
+              self.index = self.index - 1
+
+              return self.data[self.index]
+
+
+
+GENERATORS :
+
+
+GEenerators are powerful tools for creating iterators.
+
+
+They use yield statement whenever they want to return the data
+
+
+def reverse(data):
+
+     for index in range(len(data)-1,-1,-1):                                 yield data[index]
+
+
+Anything done with iterator can also be done using iterator...
+
+in generator _iter() and next_() are created automatically
+
+
+Generator Expressions :-
+
+
+they can be made like list comprehinsion but just parenthesis are used here
+
+They are more memory friendly
+
+
+a = (i*i for i in range(10))
+
+
+Abstract Base Class
 
 
 Using this we can make a class abstract...we cant instantiate an abstract class
@@ -930,20 +1152,3 @@ from abc import ABCmeta, abstractmethod, abstractproperty
 
 
 class Shape(metaclass=ABCmeta):
-
-
-
-#When a module named spam is imported, the interpreter first searches for a built-in module with that name.
-# If not found, it then searches for a file named spam.py in a list of directories given by the variable sys.path.
-
-#sys.path is initialized from these locations:
-
-# the directory containing the input script (or the current directory).
-# PYTHONPATH (a list of directory names, with the same syntax as the shell variable PATH).
-# the installation-dependent default.
-
-
-#The dir() Function¶
-# The built-in function dir() is used to find out which names a module defines. It returns a sorted list of strings:#
-import sys
-dir(sys)

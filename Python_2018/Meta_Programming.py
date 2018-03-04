@@ -16,6 +16,7 @@
 # SOLUTION :- The functools module is for higher-order functions: functions that act on or return other functions.
 #  In general, any callable object can be treated as a function for the purposes of this module.
 
+9810198101
 
 # functools.wraps. This takes a function used in a decorator and adds the
 #  functionality of copying over the function name,
@@ -86,3 +87,10 @@ if __name__ == '__main__':
     # expose the underlying signature of the wrapped function
     from inspect import signature
     print('Signature - ',signature(countdown))
+
+
+#Unwrapping a Decorator
+# Problem
+# A decorator has been applied to a function, but you want to “undo” it, gaining access to
+# the original unwrapped function.
+
