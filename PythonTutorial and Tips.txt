@@ -23,7 +23,7 @@ There are many python stuff which i think i am going to forget
 
 Closure
 
-Decorator
+Decorator  ✔
 
 ABC
 
@@ -31,13 +31,9 @@ Iterator
 
 Generator
 
-Lambda
+Lambda  ✔
 
-Map, Filter, Reduce
-
-Using Super
-
-Properties
+Map, Filter, Reduce     ✔
 
 Coroutines
 
@@ -45,12 +41,23 @@ Protocols
 
 Threading
 
-All the syntax of list comprehinsion and map reduce lambda etc
+All the syntax of list comprehinsion and map reduce lambda etc ✔
 
-static methods 
+Metaclasses and Stuff
+
+abstract class and stuff
+
+static methods ✔
 
 class methods
 
+Using Super
+
+Properties
+
+OS module for shell stuff and files handling?
+
+Collection Class
 
 
 Python is dynamic Type -- variable types are given at run time and not at compile time (java,c)
@@ -954,6 +961,10 @@ Each Class can have :
 
 Classes are created at runtime and can be modified further after creation
 
+All about class
+# https://stackoverflow.com/questions/100003/what-are-metaclasses-in-python/100037#100037
+
+
 
 
 Scope and Namespaces:-
@@ -1029,7 +1040,7 @@ global spam -- creates a spam outside if not created and assigns value to spam o
 
 spam = 6 
 
-To local scope onle
+To local scope only
 
 def abc
 
@@ -1129,13 +1140,35 @@ in generator _iter() and next_() are created automatically
 
 Generator Expressions :-
 
-
 they can be made like list comprehinsion but just parenthesis are used here
 
 They are more memory friendly
 
 
 a = (i*i for i in range(10))
+
+
+
+Metaclass in python :-
+https://stackoverflow.com/questions/100003/what-are-metaclasses-in-python
+
+A metaclass is the class of a class. Like a class defines how an instance of the class behaves,
+a metaclass defines how a class behaves. A class is an instance of a metaclass.
+
+type(name, bases, dict) --> a new type
+so a Metaclasses take 3 args. 'name', 'bases' and 'dict'
+where
+name is the name of the class
+bases is the args passed -- ()
+while dict is all the class variable and functions used -- {}
+
+OR
+type works this way:
+
+type(name of the class,
+     tuple of the parent class (for inheritance, can be empty),
+     dictionary containing attributes names and values)
+
 
 
 Abstract Base Class
@@ -1150,5 +1183,57 @@ import
 
 from abc import ABCmeta, abstractmethod, abstractproperty
 
-
 class Shape(metaclass=ABCmeta):
+
+
+____________________________________________________________________________________
+static methods:-
+
+Static methods and vars are common for each class, they are usually called from Class
+Class.method() Class.var
+
+We can define class variables and static methods with @staticmethod decorator or simply by
+removing self from the method args
+Example :-
+
+class Dog:
+    count = 0  #static vars
+    dogs = []
+
+    def __init__(self, name):
+        self.name = name
+        Dog.count += 1
+        Dog.dogs.append(name)
+
+    def bark(self):
+        print('grrrrrrrrrrrr...woof woof')
+
+    def rollback():                 #Class method made implicitly
+        print(Dog.count,Dog.dogs)
+
+    @staticmethod                   #Class method made explicitly
+    def jump():
+        print(Dog.count,Dog.dogs)
+        print("JUMP")
+
+scrappy = Dog("Scrappy")
+tommy = Dog("Tommy")
+tommy.bark()
+Dog.rollback() #calling static methods, unable to call from instance tommy
+Dog.jump()      # calling static methods
+tommy.jump()    #also unable to call from instance tommy
+
+OUTPUT:-
+grrrrrrrrrrrr...woof woof
+2 ['Scrappy', 'Tommy']
+2 ['Scrappy', 'Tommy']
+JUMP
+2 ['Scrappy', 'Tommy']
+JUMP
+____________________________________________________________________________________
+
+class methods and stuff
+
+
+using SUPER
+
