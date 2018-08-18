@@ -54,3 +54,104 @@
 # To check python version
 import sys
 print("My version Number: {}".format(sys.version))
+
+
+# CODING TIPS SO FAR
+#
+# 1.) Try to minimise the use of globals
+#
+# 2.) Manipulating Globals in a function using global keyword is not recommended (pylint fails)
+#
+# 3.) this - export abc=67 if written in cmd or shell assigns an OS level variable which can be used inside a program
+# import os
+# os.environ.get('abc')
+#
+# 4.) Avoid writing repetitive code...use a function instead
+#
+# 5.) dates
+from datetime import datetime,timedelta
+import time
+
+#which is string from time #strftime(datetime_date_obj,format)
+
+#there is also string parse time #strptime(strDate,date_format)
+
+# Today = time.strftime('%Y-%m-%d')
+#
+# Yesterday = datetime.strftime(datetime.now-timedelta(1), '%Y%m%d')
+#
+# we can also do today - yesterday which gives
+# datetime.timedelta() obj which we can just
+# str(diff)  or take out total_seconds() days etc
+#
+# 6) To run cmd commands directly and. store the output in a variable
+# import command
+#
+# out = command.getstatusoutput('grep pattern' + path)
+#  out is tuple
+# same thing can be done using subprocess
+#
+# b = subprocess.check_output(['ls'])
+# b is a string
+#
+# 7.) Use difflib module to compare the lists
+#
+# for line in difflib.unified_diff(prevfile,curr_file, fromfile= 'file1' , tofile = 'file2',lineterm= ' ' ,n=0):
+#   for prefix in ('---','+++','@@'):
+#     if line.startswith(prefix)
+#         break
+#     else:
+#       result.append(line)
+#
+# 8.) subprocess.check_output("ls", "-ltr")
+# this executes the ls -ltr
+#
+# Runs command with arguments and return it's output as a byte string
+#
+# To capture the standard error in the result use
+# stderr = subprocess.STDOUT
+#
+# 9.) Unix : crontab - for job scheduling
+#
+# use cronta for job scheduling
+# -e - edit
+# -l - to view
+# -r to delete
+#
+# crontab -e
+# min date dom mon dow command
+#
+# 30 12 * * * echo "Hello World" > /tmp/abc.txt
+#
+# 10.) To run unix commands on python
+# use
+# 1.) OS
+# 2.) subprocess
+#
+# import os
+# os.system('pwd | grep abcd')
+#
+# this outputs what ever the ouput is and
+# returns 0 on success
+# and some other numbers on failure?
+#
+# 2.) subprocess -
+#
+# now subprocess has 2 ways
+#
+#  a.) out = subprocess.check_output(["ls","-ltr"])
+# it returns the output in out
+#
+# it does not support piping so use..
+# but we can use PIPE but with a security issues by using shell=True
+#
+# output = subprocess.check_output("ls | grep GTR" , shell=True)
+#
+# b.) Popen
+#
+# a= subprocess.Popen(["ls"], stdout=subprocess.PIPE)
+#
+# b = subprocess.Popen(["grep","gtr"], stdin= a.stdout, stdout=subprocess.PIPE)
+#
+# a.stdout.close()
+# out = b.communicate()[0]

@@ -234,7 +234,8 @@ zip(*SequencelikeaboveOne)
 
 Sets:-. Mutable
 
-a set is an unordered collection with no duplicate elements. basic uses includes membership testing and eliminating duplicate entries
+a set is an unordered collection with no duplicate elements.
+basic uses includes membership testing and eliminating duplicate entries
 
 
 Supports union intersection difference and symmetric difference
@@ -382,9 +383,13 @@ for q ,a in zip(questions,answers) 
 
 range()
 
-In many ways the object returned by range() behaves as if is a list, but in fact it isn't. It is an object which returns the successive items of the desired sequence when u iterate over it, but it doesn't really make the list, thus SAVING SPACE 
+In many ways the object returned by range() behaves as if is a list,
+but in fact it isn't. It is an object which returns the successive items of the
+desired sequence when u iterate over it, but it doesn't really make the list,
+thus SAVING SPACE 
 
-Now when we iterate over for x in range (10) then the value of x is retained #x = 9 but using LIST Comprehinsion this can be avoided
+Now when we iterate over for x in range (10) then the value of x
+is retained #x = 9 but using LIST Comprehinsion this can be avoided
 
 
 Iterator and Iterables :
@@ -423,11 +428,12 @@ short circuit operations are performed left to right  a and b or c 
 
 LIST COMPREHINSION: -
 
- A list comprehinsion  cosists of bracket containing an expression followed by a for clause, then zero or more for or if clauses.
+A list comprehinsion  cosists of bracket containing an expression followed
+by a for clause, then zero or more for or if clauses.
 
-The result will be a new list resulting from evaluating the expression in context of the for and if clause which follow it....eg-
-
-This listcomp combines the elements of two lists if they are not equal
+The result will be a new list resulting from evaluating the expression in context of
+the for and if clause which follow it....eg- This listcomp combines the elements of two
+lists if they are not equal
 
 
 [(x,y) for x in [1,2,3] for y in [3,1,4] if x!=y]
@@ -448,7 +454,7 @@ We can even use ternary operator in list comprehinsion
 
 --> a if True else False
 
-[ [ 1 if j==i else 0 for i in range(5)]  for i in range(5)] 
+[ [ 1 if j==i else 0 for j in range(5)]  for i in range(5)] 
 
 
 1,0,0,0,0
@@ -488,7 +494,9 @@ if _name_ = '_main_':
     pass
 
 
-Whenever we write import that the interpreter first looks in the built in modules if the name is not found ,it searches for a file named spam.py in a list of directories given by the variable sys.path
+Whenever we write import that the interpreter first looks in the built
+in modules if the name is not found ,it searches for a file named spam.py in a
+list of directories given by the variable sys.path
 
 
 sys.path is initialized from these locations:
@@ -506,7 +514,7 @@ Packages - they are the folders which contains a no of modules or other packages
 
 so in the top level of the directory there is a file with name 
 
-_init_.py it tells that all these folders qre packages
+_init_.py it tells that all these folders are packages
 
 it also contains a variable named _all_ which tells which modules to include when we call
 
@@ -520,7 +528,8 @@ now only modules mentioned in the file gets imported
 INPUT AND OUTPUT
 
 
-str() and repr() converts objects to string however repr is more readable to interpreter and str() to human
+str() and repr() converts objects to string however
+repr is more readable to interpreter and str() to human
 
 
 str('Hi')
@@ -657,7 +666,9 @@ JSON
 import json
 
 
-file.write() saves the content as string and its hard to write numbers to a file as while reading it we have to convert it back to int..so in order to write numbers,list, tuple or dictionary we can use json module
+file.write() saves the content as string and its hard to write numbers
+to a file as while reading it we have to convert it back to int..so in order to write
+numbers,list, tuple or dictionary we can use json module
 
 
 json.dumps([1,2,3,4,5,]
@@ -676,48 +687,82 @@ and we can get back the data as
 
 
 json is used for serialisation and deserialization
-
-
 and then can be sent over network to some other computer
 
+JSON: Reading from a file
 
-Pickle is a protocol that can also be used for serialisation and for saving more complex objects..but it is quite insecure and supports only in python
+def json_read(fname):
+  try:
+    data = open(fname).read()
+     return json.loads(data)
+ except (IOErrors, ValueError):
+      return {}
+
+Writing to a JSON:-
+def json_write(fname, data):
+  new = json_read(fname)
+  if isinstance(data, dict):
+      new.update(data)
+  try:
+      dump = json.dumps(new, indent=2, sort_keys= True, separators = (',' , ': '))
+      filejson = open(fname, 'w')
+      filejson.write(dump)
+      filejson.close()
+except IOErrors as err:
+     print err
+
+Getting a str versiom of json-dict
+def strify(data):
+if isinstance (data, dict):
+     return {strify (key): strify(value) for key, value in data.iteritems()}
+elif isinstance (data, list)
+return [ strify(element) for element in data]
+elif  isinstance (data, unicode):
+  return data.encode('utf-8')
+else:
+ return data
 
 
 
+Pickle is a protocol that can also be used for serialisation and for saving more
+complex objects..but it is quite insecure and supports only in python
 
-Closure - As the name suggests...closee....secret...so closure retains a value...generally a function that returns a function (fun inside a fun)
 
+Closure - As the name suggests...closee....secret...so closure retains a value...
+generally a function that returns a function (fun inside a fun)
+
+Sometimes we want a function to retain a value when it was created even though the
+scope cease to exist. This technique of using the values of outer parameters within a
+dynamic function is another way of defining the closure.
 
 example
+def startAt(start):
+	def incrementBy(inc):
+		return start + inc
+	return incrementBy
+
+f = startAt(10)
+g = startAt(100)
+
+print f(1), g(2)
+11 102
 
 
-def secretMessage(message):
-
-    def innerfun():
-
-           return message
-
-    return innerfun
+we can even use lambda
+def startAt(start):
+	return lambda inc: start+inc
 
 
-secret = secretMessage ("I am the best")
+f = startAt(10)
+g = startAt(100)
 
-print (secret())
-
-
-#i am the best
-
+print f(1), g(2)
 
 
 Decorator
 
-
 decorators are same as closure...they return another function but here is a catch
-
 Here we decorate another function with our returning function
-
-
 So here the function which we decorate becomes another function now for example
 
 
