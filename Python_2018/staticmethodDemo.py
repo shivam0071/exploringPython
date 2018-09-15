@@ -25,4 +25,4 @@ tommy = Dog("Tommy")
 tommy.bark()
 Dog.rollback() #calling static methods, unable to call from instance tommy
 Dog.jump()      # calling static methods
-tommy.jump()    #also unable to call from instance tommy
+tommy.jump()    #able to call from instance tommy

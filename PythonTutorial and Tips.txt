@@ -333,6 +333,9 @@ a.get(key) #gets the value
 
 a.update(dict)  adds a new dictionary to the current
 
+setdefault(key[,d])
+If key is in the dictionary, return its value.
+If not, insert key with a value of d and return d (defaults to None).
 
 if you try to override a key then the key with last value is only accepted...others are not considered
 
@@ -735,6 +738,9 @@ Sometimes we want a function to retain a value when it was created even though t
 scope cease to exist. This technique of using the values of outer parameters within a
 dynamic function is another way of defining the closure.
 
+the inner function remembers the environment in which it was created
+In other words, the inner function has access to the outer function’s variables and parameters.
+
 example
 def startAt(start):
 	def incrementBy(inc):
@@ -847,13 +853,10 @@ functions vs procedure vs method:
 A function returns a value where as a procedure doesn't
 
 
-A method is a function that belongs to an object and is named obj.methodName (obj is object/expression) 
-
-
+A method is a function that belongs to an object and is named obj.methodName
+(obj is object/expression) 
 
 in python every function returns NONE implicitly...
-
-
 
 When calling a function we use
 
@@ -867,11 +870,11 @@ When calling a function we use
 (100,rollno=4,5) # Error
 
 
-In a function we often give default values to the parameters but Important warning: The default value is evaluated only once. This makes a difference when a default value is mutable object such as a list, dictionary or instances,
+In a function we often give default values to the parameters but Important warning: 
+The default value is evaluated only once. This makes a difference when a default value
+is mutable object such as a list, dictionary or instances,
 
 Eg- 
-
-
 def f(a,L=[]):
 
     L.append(a)
@@ -886,8 +889,6 @@ print(f(2)).   #[1,2]
 print(f(3)).  #[1,2,3]
 
  
-
-
 u can avoid this by
 
 def f(a,L=None):
@@ -903,7 +904,8 @@ def f(a,L=None):
 
 Unpacking Argument Lists:
 
-if args are already in a list or tuples but need to be unpacked for a function call requiring separate positional parameters
+if args are already in a list or tuples but need to be unpacked for a function call
+requiring separate positional parameters
 
 eg-
 
@@ -918,7 +920,6 @@ in same way dictionaries can deliver keyword arguments with ** operator
 
 
 parrot(**d)
-
 
 
 
@@ -949,22 +950,17 @@ I used it like this...print from 1-10 except 3,6,9
 ls2 = list(filter(lambda x: x%3 , range(1,11))
 
  
-
-
 Map Reduce and Filter
-
 
 They are function
 
 They are used with a sequence
 
-
-
 Map: As the name suggests... A map function is used for mapping of a. sequence
 
 
 a = list(map(lambda y: y+2,range(10)) 
-
+# [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
 
 Filter : Filter filters the stuff based on true and false...if something is
@@ -973,22 +969,16 @@ Filter : Filter filters the stuff based on true and false...if something is
 
 1 is True
 
-
 b = list (filter(lambda x: x%5 ==0,nlist)
 
-
-
 Reduce :
-
 import functools
 
 Reduce reduces the sequence 
 
 It takes 2 or more ?parameters at a time
 
-
 Example- ls4 = functools.reduce(lambda x,y : x if x> y else y, nlist2)
-
 
 
 
@@ -1031,9 +1021,11 @@ Example- 
 4.) In a sense the set if attributes of an object also formba Namespace
 
 
-the important thing to know about namespaces is that ther is absolutely no relation between names in different namespaces
+the important thing to know about namespaces is that ther is absolutely no relation
+between names in different namespaces
 
-eg- two different modules may both define q function maximise without confusion -- usere of the module must prefix module name
+eg- two different modules may both define q function maximise without confusion --
+usere of the module must prefix module name
 
 
 
@@ -1068,9 +1060,12 @@ the next-to-last scope contains the current module’s global names
 the outermost scope (searched last) is the namespace containing built-in name.
 
 
-If name is declared global,then all references and assignments go directly to the middle scope containing the module’s global names.
+If name is declared global,then all references and assignments go directly
+to the middle scope containing the module’s global names.
 
-To rebind variables found outside of the innermost scope, the nonlocal statement can be used; if not declared nonlocal, those variables are read-only (an attempt to write to such a variable will simply create a new local variable in the innermost scope, leaving the identically named outer variable unchanged
+To rebind variables found outside of the innermost scope,
+the nonlocal statement can be used; if not declared nonlocal,
+those variables are read-only (an attempt to write to such a variable will simply create a new local variable in the innermost scope, leaving the identically named outer variable unchanged
 
 
 eg - 
@@ -1111,7 +1106,8 @@ classDerivedClassName(Base1,Base2,Base3):
  pass
 
 
-if an attribute is not found in derivedclassname, it is searched for in Base1 , then (recursively) in the base classes of base1, if not found then in base2 and so on
+if an attribute is not found in derivedclassname, it is searched for in Base1 ,
+then (recursively) in the base classes of base1, if not found then in base2 and so on
 
 
 its still more complex that tht
@@ -1124,13 +1120,17 @@ Iterators:
 
 Behind the scene a for statement calls iter() on a container object.
 
-This function returns an Iterator object that defines the _next_() which accesse elements in the container one at a time...when no more elements are left it raises a STOPIteration exception which tells the for loop to terminate
+This function returns an Iterator object that
+defines the _next_() which accesse elements in the container one
+at a time...when no more elements are left it raises a STOPIteration exception
+which tells the for loop to terminate
 
 
 So this is the iterator protocol now we can add this behaviour to our own classes
 
 
-Define an iter method that returns object with a next method OR if class defines next then iter can return self
+Define an iter method that returns object with a next method OR if
+class defines next then iter can return self
 
 
 
@@ -1138,44 +1138,29 @@ eg-- psudo code
 
 class reverse:
 
-
     def init(self,data)
-
          self.data = data
-
          self.index = len(data)
 
-    
-
       def _iter_(self):
-
            return self
 
-
        def _next_(self):
-
-             if self.index ==0
-
+             if self.index == 0:
                    raise StopIteration
-
-              self.index = self.index - 1
-
-              return self.data[self.index]
+             self.index = self.index - 1
+             return self.data[self.index]
 
 
 
 GENERATORS :
-
-
 GEenerators are powerful tools for creating iterators.
-
-
 They use yield statement whenever they want to return the data
-
 
 def reverse(data):
 
-     for index in range(len(data)-1,-1,-1):                                 yield data[index]
+     for index in range(len(data)-1,-1,-1):                           
+        yield data[index]
 
 
 Anything done with iterator can also be done using iterator...
@@ -1218,17 +1203,47 @@ type(name of the class,
 
 Abstract Base Class
 
+Abstract classes are classes that contain one or more abstract methods.
+An abstract method is a method that is declared, but contains no implementation.
+Abstract classes may not be instantiated, and require subclasses to provide implementations
+for the abstract methods.
 
-Using this we can make a class abstract...we cant instantiate an abstract class
+from abc import ABC, abstractmethod
+
+class AbstractClassExample(ABC):
+
+    def __init__(self, value):
+        self.value = value
+        super().__init__()
+
+    @abstractmethod
+    def do_something(self):
+        pass
 
 
-to make an abstract class 
+class DoAdd42(AbstractClassExample):
+  def do_something(self):
+    return self.value + 42
 
-import
 
-from abc import ABCmeta, abstractmethod, abstractproperty
+class DoMul42(AbstractClassExample):
 
-class Shape(metaclass=ABCmeta):
+  def do_something(self):
+    return self.value * 42
+
+
+add = DoAdd42(1)
+mul = DoMul42(2)
+print(add.do_something(),mul.do_something())
+
+A class that is derived from an abstract class cannot be instantiated unless all of its abstract methods are overridden.
+
+You may think that abstract methods can't be implemented in the abstract base class.
+This impression is wrong: An abstract method can have an implementation in the abstract class!
+Even if they are implemented, designers of subclasses will be forced to override the
+implementation. Like in other cases of "normal" inheritance, the abstract method can be invoked
+with super() call mechanism. This makes it possible to provide some basic functionality in the
+abstract method, which can be enriched by the subclass implementation.
 
 
 ____________________________________________________________________________________
