@@ -1,4 +1,6 @@
-# 3. Which module in the python standard library parses options received from the command line?
+#https://docs.python.org/3/faq/programming.html#general-questions
+
+#3. Which module in the python standard library parses options received from the command line?
 # a) getopt
 # b) os
 # c) getarg
