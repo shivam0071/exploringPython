@@ -358,19 +358,32 @@ di = dict(Name = 'Shivam' , Class = 10)
 dict comprehinsion is also possible
 
 
+unpacking a dict (**dict)
+you can unpack the values of dict based on keys
+for example
+def some_method(apple,mango='MANGO',banana='BANANA'):
+    print apple,mango,banana
+
+dicti = {'apple':'APP','mango':'MAN','banana':'BAN'}
+some_method(**dicti)
+
+this works for any iterator
+some_method(*[1,2,3])
+some_method(*'SHA')
+
+So the basic of this is that there should be someone accepting the same amount of variables which are
+being sent or present in any iterator
 
 
 Looping Stuff:
 
-when you look over a list or something,try to loop over its copy...as modifying the current list may cause some issues with the loop (see docs)
-
+when you look over a list or something,try to loop over its copy...as modifying the current
+list may cause some issues with the loop (see docs)
 so use 
 
 for i in list[:] :
 
-
 now you can modify the list freely
-
 
 use enumerate for index and value
 

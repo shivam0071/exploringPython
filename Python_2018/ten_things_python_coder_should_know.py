@@ -155,3 +155,27 @@ import time
 #
 # a.stdout.close()
 # out = b.communicate()[0]
+
+
+#11) Unpacking Iterators... the * and ** mystery (the opposite of *args **kwargs)
+#  def some_method(apple, mango='MANGO', banana='BANANA'):
+#   print (apple, mango, banana)
+#
+#
+# dicti = {'apple': 'APP', 'mango': 'MAN', 'banana': 'BAN'}
+#
+# # some_method(**dict)
+# # some_method(*[1,2,3])
+# # some_method(*'SHA')
+
+# 12) Some grep options that i have seen
+#
+# -ANUM (text below match)
+# -B (Above)
+# -C (BOTH)
+# -mNUM - exact one match
+# -n - line number
+# -w - exact match
+
+
+
