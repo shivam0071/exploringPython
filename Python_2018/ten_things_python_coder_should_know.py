@@ -176,6 +176,8 @@ import time
 # -mNUM - exact one match
 # -n - line number
 # -w - exact match
-
+# -v - negative match
+# using awk to match
+# awk '/MATCHTHIS/ && /THIS/ && !/Not this/' file_name | grep some_other_patterns
 
 

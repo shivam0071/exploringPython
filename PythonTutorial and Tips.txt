@@ -27,6 +27,8 @@ Decorator  ✔
 
 ABC
 
+Inheritance Concepts and Polymorphism
+
 Iterator
 
 Generator
@@ -58,6 +60,10 @@ Properties
 OS module for shell stuff and files handling?
 
 Collection Class
+
+Command Line Parser ✔ - # https://docs.python.org/2/howto/argparse.html#id1
+
+
 
 
 Python is dynamic Type -- variable types are given at run time and not at compile time (java,c)
@@ -260,7 +266,7 @@ a - b -- A not in B (s.difference())
 a ^ b -- unique letters in A B (letters in a or b but not both) 
 
 
-also supports set comprehinsion 
+also supports set comprehension 
 
 using { expr loop condition } 
 

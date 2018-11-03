@@ -1,3 +1,5 @@
+# Note that here we are exploiting the bug : shared reference to one dict for all calls (_cache)
+#which we usually avoid by using a non mutable object such as None
 #Memoizing
 # Callers can only provide two parameters and optionally pass _cache by keyword
 def expensive(arg1, arg2,data, _cache={}):
