@@ -107,17 +107,66 @@ str + str2 
 
 slicing
 
+Some useful methods of Strings:-
 str.count('a')
 
 str.strip() removes the whitespaces,
 
-
 str.split(sep,maxsplit)
-
 #returns a list
+
+str.rfind('a')
+finds the right most a but return the index from the left only
+
+str.upper()
+#returns uppercase
+
+str.lower()
+#lower
+
+str.format()
+Positional arguments:
+
+str1 = 'Shivam is {} {}'
+str1.format('too lazy','to type')
+#'Shivam is too lazy to type'
+
+str1 = Hello {0}, your balance is {1:9.3f}
+str1.format('Shaan',888.868767)
+'Hello Shaan, your balance is   888.869'
+"note that here 9 is left padding...the extra space"
+
+Named Args:
+str1 = 'My name is {name} and i am {what}'
+str1.format(name='Shaan',what='bored')
+'My name is Shaan and i am bored'
+
+Old formatting
+
+str = 'hey %s whats up with %d and %.3f'
+str % ('Shivam',71,7.1)
+'hey Shivam whats up with 71 and 7.100'
+
+str.capitalize()
+# shivam to Shivam
+str='good-BYE'
+str.capitalize()
+'Good-bye'
+
+
+str.center(50,'*') # takes total space of 50 if the given string is not of len 50 then it adds '*' or space to make it 50
+>> '*********hey %s whats up with %d and %.3f*********'
+len(str.center(50,'*'))
+>> 50
+
+str.partition(sep) #make partition based on
+hey %s whats up with %d and %.3f'
+str.partition('u')
+('hey %s whats ', 'u', 'p with %d and %.3f')
 
 
 "-".join(str) # S-h-i-v-a-m
+
 
 (works with list of strings aswell )
 
