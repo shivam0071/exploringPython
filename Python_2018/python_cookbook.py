@@ -40,4 +40,3 @@ print(sorted(portfolio,key=lambda x:x['price'],reverse=True)[:3])
 # same size as the collection itself, it is usually faster to sort it first and take a slice (i.e.,
 # use sorted(items)[:N] or sorted(items)[-N:]).
 
-

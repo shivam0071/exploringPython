@@ -164,9 +164,20 @@ hey %s whats up with %d and %.3f'
 str.partition('u')
 ('hey %s whats ', 'u', 'p with %d and %.3f')
 
+TO format:-
+format(s, '>20')
+#'              Shivam'
+
+format(s, '<20')
+#'Shivam              '
+
+format(s, '^20')
+#'       Shivam       '
+
+format(s, '*^20')
+'*******Shivam*******'
 
 "-".join(str) # S-h-i-v-a-m
-
 
 (works with list of strings aswell )
 
