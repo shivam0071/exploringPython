@@ -88,7 +88,7 @@ or
 print ('hi') if a==b else print('bye')
 
 
-
+__________________________________________________________________________________________________
 Strings
 
 
@@ -181,6 +181,7 @@ format(s, '*^20')
 
 (works with list of strings aswell )
 
+___________________________________________________________________________________________________
 
 
 LIST methods :- Implemented as array of pointers to objects(in cpython)
@@ -242,7 +243,9 @@ This is a design principal for all mutable data structures in Python
 
 ls1 + ls2 works same as extend() but it doesn't changes the original list
 
-
+A list slicing always returns a list not an item ls[-1:] retuns a list
+while ls[-1] returns an item
+___________________________________________________________________________________________________
 
 Tuples :
 
@@ -408,6 +411,17 @@ if you try to override a key then the key with last value is only accepted...oth
 
 basic operations
 
+empty a dictionary
+dic3.clear()
+
+dic.items()
+# (key, value)
+
+dic.keys()
+[keys]
+
+dic.values()
+[values]
 
 tel = {1:6,3:7}
 
