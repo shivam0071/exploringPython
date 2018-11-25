@@ -215,6 +215,10 @@ you can make ur own functions in keys
 
 ls[::-1]  
 
+convert all string in a list to int -- Use MAP class
+list(map(int, ['4', '5']))
+[4,5]
+
 or 
 
 lambda x : x[1] --> sorts based on 2nd element in a list of list 
@@ -278,7 +282,6 @@ zip() returns a zip object which further can be converted into list(list of tupl
 list(zip([1,2,3,4,5],[6,7,8,9,0]))
 
 element wise [(1,6) and so on]
-
 
 ignores the values if lists are of unmatching size
 
@@ -379,10 +382,20 @@ A dictionary is an unordered set of key : Value pairs where keys are unique
 A dictionary is a mapping between a set of keys and values. The keys() method of a
 dictionary returns a keys-view object that exposes the keys. A little-known feature of
 keys views is that they also support common set operations such as unions, intersections,
-
 and differences
 
+dic1 = {1:2,4:5,6:7}
+dic2 = {1:2,6:7}
+dic1.keys() & dic2.keys()  --> {1, 6}
+dic1.keys() | dic2.keys()  --> {1, 4, 6}
+dic1.keys() ^ dic2.keys()  --> {4}
+dic1.keys() - dic2.keys()  --> {4}
 
+Merging two dictionaries (python 3)
+x = {'a': 1, 'b': 2}
+y = {'b': 3, 'c': 4}
+
+{**x, **y}
 
 Key Value Pairs 
 
@@ -405,6 +418,8 @@ a.update(dict)  adds a new dictionary to the current
 setdefault(key[,d])
 If key is in the dictionary, return its value.
 If not, insert key with a value of d and return d (defaults to None).
+
+eg - dic1.setdefault(10, 's')
 
 if you try to override a key then the key with last value is only accepted...others are not considered
 

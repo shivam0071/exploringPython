@@ -57,3 +57,34 @@ ls4 = [1,2,0,44,0,66,0,5644,3,0,33,4]
 ls5 = [item for item in ls4 if item != 0]
 ls5.extend([0] * (len(ls4) - len(ls5)))
 print(ls5)
+
+
+# 9 WAP to get the key of a dict if the value is present in the dictionary if not present then
+# print None
+
+print(dic1)
+val = 'Shaan'
+for key, value in dic1.items():
+  if value == val:
+    print(key)
+    break
+else:
+  print(None)
+
+
+# WAP to capitalize the name and surname
+name = 'naruto uzumaki'
+print(' '.join([na.capitalize()for na in name.split()]))
+
+# WAP to get user from input ...if he typs stop...stop the prgram
+# while(True):
+#   user = input('Enter Whatever the heck you want....type stop to end this\n')
+#   if user == 'stop':
+#     break
+#   print(user)
+#   print(type(user))
+
+# WAP to conver a list into a string [1,2,3,4,5] -- ['1','2','3']
+
+ls6 = [1,2,3,4,5]
+print([str(item)for item in ls])
