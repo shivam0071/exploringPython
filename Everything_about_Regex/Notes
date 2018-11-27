@@ -1,0 +1,62 @@
+METACHARACTERS
+
+1. ^ (caret) - start of the line
+2. $ (dollar) - end of the line
+
+Tip :
+It's best to get into the habit of interpreting regular expressions in a rather literal
+way. For example, don't think
+^cat" matches a line with cat at the beginning
+but rather:
+^cat" matches if you have the beginning of a line, followed immediately
+by c, followed immediately by a, followed immediately by t.
+They both end up meaning the same thing, but reading it the more literal way
+allows you to intrinsically understand a new expression when you see it.
+
+3. Character Class
+[...] - character class, lets you list the characters you want to allow at
+that point in the match
+
+Tip : While e" matches just an e, and a" matches just an a, the regular expression [ea]" matches
+either. So, then, consider gr[ea]y": this means to find g, followed by r, followed
+by either an e or an a, all followed by y .
+The contents of a class is a list of characters that can match at that point,
+so the implication is or
+
+eg - <H[123456]>", which matches <H1>, <H2>, <H3> etc
+
+    (3.a) Character class metacharacter ->  - (Dash) (Note that a dash is a metacharacter only within a character class  otherwise it
+     matches the normal dash character.)
+
+    (dash) indicates a range of characters: !<H[1-6]>" is identical to the previous
+    example. [0-9]"
+
+    more examples - [a-z], [a-zA-z], [0-9a-fA-F] and [A-Fa-f0-9] are same as order doesn't matter
+    [0-9A-ZR!.?] matches a digit, uppercase letter, underscore, exclamation
+    point, period, or a question mark.
+
+
+
+THINGS so FAR
+^cat$ --> Literally means: matches if the line has a beginning-of-line (which, of
+          course, all lines have), followed immediately by c × a × t, and then followed
+          immediately by the end of the line.
+      Effectively means: a line that consists of only cat  no extra words,
+      spaces, punctuation... just `cat'.
+
+^$ --> Literally means: matches if the line has a beginning-of-line, followed
+                      immediately by the end of the line.
+                    Effectively means: an empty line (with nothing in it, not even spaces).
+
+
+^  --> Literally means: matches if the line has a beginning-of-line.
+Effectively meaningless! Since every line has a beginning, every line
+will matcheven lines that are empty!
+
+
+    (3.b) [^] (negate)--> the class matches any character that isn't listed
+    [^1-6] --> matches a character that's not 1 through 6. The leading ^ in
+    the class negates the list, so rather than listing the characters you want to include
+    in the class, you list the characters you don't want to be included.
+
+ Note that [^u] means match any character other that "u", So something should match
