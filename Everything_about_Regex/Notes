@@ -59,4 +59,68 @@ will matcheven lines that are empty!
     the class negates the list, so rather than listing the characters you want to include
     in the class, you list the characters you don't want to be included.
 
- Note that [^u] means match any character other that "u", So something should match
+ Note that [^u] means match any character other that "u", So
+ something should match (even a space or next line character in th end (\n)
+
+
+4.)Metacharcter  . (dot) :-
+ones that match any character (including the dash, period, and slash that we are expecting).
+However, it is important to know that each dot can match any character at all, so it can match,
+say, `lottery numbers: 19 203319 7639'.
+
+This is more precise 03[-./]19[-./]76 if we need -./
+mostly depends on your knowledge of data being searched
+
+
+5.) Metacharacter | (OR) :- It allows you to combine
+multiple expressions into a single expression that matches any of the individual
+ones.
+
+For example, Bob" and Robert" are separate expressions, but Bob|Robert is
+one expression that matches either. When combined this way, the subexpressions
+are called alternatives.
+
+Note that | is just a character inside [...] so you can't or like gr[a|e]y
+instead use gr(a|e)y  OR  grey|gray
+the parentheses are required because without them, gra|ey
+means gra or ey
+
+Now why do we need or when we have [...]?
+Its because with Jeffrey ,Jeffery" we can Jeff[re]y which means search for Jeffey or Jeffry
+which is not what we can (here we have 2 characters to match and not just one
+
+So we can or as
+Jeffrey|Jeffery
+Jeff(rey|ery)
+Jeff(re|er)y
+
+So Far :-
+
+Metacharacter           Name                                    Matches
+.                       dot                                     any one character
+[]                   character class                         any character listed
+[^]                  negated character class                 any character not listed
+^                      caret                                    the position at the start of the line
+$                      dollar                                   the position at the end of the line
+\<                      backslash less-than                     the position at the start of a word
+\>                      backslash greater-than                  the position at the end of a word
+                                                                 (not supported by all versions of egrep)
+|                        or; bar                                matches either expression it separates
+()                   parentheses                             used to limit scope of !;", plus additional uses
+
+Optional ITEMS
+6.) Metacharacter (?) (question mark) :-
+The metacharacter ? (question mark) means optional. It is placed after the character that is
+allowed to appear at that point in the expression, but whose existence isn't actually
+required to still be considered a successful match.
+
+Eg for matching colour and color we can use
+colo?ur which matches color or colour
+Note that ? is always successful
+
+We can also use ? with a parenthesis now everything in paranthesis
+acts as one complete unit -- ()?
+eg- in order to match 4th or 4 we can -> 4(th)?
+
+
+Other Quantifier s: Repetition (18)
