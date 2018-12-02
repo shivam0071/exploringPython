@@ -951,6 +951,32 @@ BIHelloIB
 Hello
 
 
+Some Analysis :-
+Whenever we decorate a function with a decorator
+@new_func
+def func(n1,n2)
+
+then first new_func is called and the function func is implicitly passed so its kinda like
+new_func(func)
+Now if a wrapper(function inside a decorator) defined with in a decorator
+(which we usually should but not necessary) then that wrapper also automatically accepts
+the no of args that the originally function has
+
+basically it should return a function as it gets called automatically
+so we can return the function passed or the wrapper or even a lambda function
+
+checkout closure_decorator.py for decorators with args and class decorators
+
+Deco with args:-
+1.)using  triple functions:
+the outermost function act as a decorator for a decorator and returns a decorator function lol
+which then acts like a not=rmal decorator
+So when we say @outermost_Deco(args1,args2)
+this outermost gets called which returns a decorator ( the call is made without calling the normie
+function)
+now when the normie is called it behaves like how it should with a normal decorator
+
+2.)
 
 
 FUNCTIONS
