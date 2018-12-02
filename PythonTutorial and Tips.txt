@@ -976,7 +976,7 @@ this outermost gets called which returns a decorator ( the call is made without 
 function)
 now when the normie is called it behaves like how it should with a normal decorator
 
-2.)
+2.)using Class
 
 
 FUNCTIONS
