@@ -1,0 +1,174 @@
+https://www.youtube.com/watch?v=HXV3zeQKqGY&t=1213s
+
+Database - Collection of Similar Data or related information
+
+Database Management System (DBMS) make it easy to create, maintain and secure a Database
+DBMS allows us to perform CRUD operations (create, read, update and Delete)
+
+We always query the DatabaseMS
+for example if we are searching for any products in flipkart.com then as soon as we hit the search button
+the flipkart takes the query to DBMS and DBMS returns the result which is shown to us
+by the flipkart...
+
+
+There are two types of Databases:-
+1.) Relational Database ( stores data in form of tables..rows and columns) SQL is used
+eg:- sqlserver, mysql, postgresdb etc
+
+2.) Non - Relational
+(Stores data in other datastructures such as json xml etc)
+Eg - mongo, couchDB , cassendra etc
+
+
+TABLE and KEYS
+
+Primary Key - To uniqely identify a specific row
+a primary key can be anything but it should be unique
+
+
+Surrogate Key :- A primary key but it is not mapped anywhere else...just used for th purpose
+of identifying a row
+eg - keys like 1,2,3,4,5
+
+Natural Key :- A key which has a mapping in the real world..
+For ex - Aadhar Card Number of each citizen
+
+
+Foreign Key:-
+A key which defines a relationship between tables
+so this column content is a primary key in some other table (column names can be different)
+
+now we can have more information stored about something in some other table
+
+a table can have more than one foreign keys and foreign key can belong to the same table
+emp_id as primary key and supervisor_id as foreign key
+
+
+Composite Key:-
+A key made up of more than 1 attribute(columns)
+and the attributes can also be foreign keys
+
+
+SQL:-
+Structured Query Language:-
+
+There are many DBMS but we can't use the same SQL on each of them
+The idea is same but the syntax is different
+
+So SQL is a hybrid language. Its basically 4 language in 1
+Data Query Language (DQL)
+
+Data Definition Language (DDL)
+
+Data Control Language (DCL)
+
+Data Manipulation Language(DML)
+
+
+
+1:15:00
+Creating Tables
+
+Data Types:-
+INT     -- Whole Number
+DECIMAL(M,N)  -- 'M - total no of digits N - digits after decimal point'
+VARCHAR(n)  'String of text of length n'
+BLOB    -- Binary, Large Object
+DATE    -- 'YYYY-MM-DD'
+TIMESTAMP -- 'YYYY-MM-DD HH:MM:SS'
+
+
+CREATE TABLE student (
+student_id INT,
+name VARCHAR(30),
+major VARCHAR(30),
+PRIMARY KEY(student_id)
+);
+
+DESCRIBE student; ->
+
+Field	Type	Null	Key	Default	Extra
+student_id	int(11)	NO	PRI	NULL
+name	varchar(30)	YES		NULL
+major	varchar(30)
+
+
+
+* To delete a table
+DROP TABLE student;
+
+* To modify the table ( add a column)
+ALTER TABLE student ADD gpa DECIMAL(3,2);
+
+* Deleting a column from a table
+ALTER TABLE student DROP COLUMN gpa;
+
+
+INSERTING DATA into Tables
+
+*
+INSERT INTO student VALUES(1, 'Jack', 'Biology');
+
+INSERT INTO student(student_id, name) VALUES (3, 'Shaan');
+
+* Deleting a row from  a table
+DELETE FROM student where student_id = 3;
+
+CREATE TABLE student (
+student_id INT,
+name VARCHAR(30) NOT NULL,
+major VARCHAR(30) UNIQUE,
+PRIMARY KEY(student_id)
+);
+
+INSERT INTO student VALUES(3, NULL , 'English');
+INSERT INTO student VALUES(4, 'Jack', 'Biology');
+
+ER_BAD_NULL_ERROR: Column 'name' cannot be null
+ER_DUP_ENTRY: Duplicate entry 'Biology' for key 'major'
+
+
+These are called "Constraints" (not null, Unique, etc)
+
+some more
+* major VARCHAR(30) DEFAULT 'undecided', ( Gives a default value if not specified in Insert)
+* AUTO_INCREMENT  -- student_id INT AUTO_INCREMENT, (Id increments automatically)
+example -> INSERT INTO student(name, major) VALUES('Shaan', 'Actor')
+
+
+UPDATE and DELETE:-
+
+* UPDATE student set major = 'Bio' where major='Biology';
+
+* where major = 'Bio' OR major = 'Chemstry'
+
+* UPDATE student set name = 'Shaan', major = 'Actor' where id = 1
+
+DELETE :
+DELETE FROM student where student_id = 3;
+
+
+
+# BASIC QUERIES :-
+
+SELECT -> To get the info
+
+* Select * from student ORDER BY name DESC  ( asc for ascending)
+ORDER BY major, student_id
+
+* SELECT * from student LIMIT 2;
+
+* SELECT * from student ORDER BY name LIMIT 2 ;
+
+###
+-- (comment)
+<
+>
+< =
+> =
+<> (Not equal to)
+AND
+OR
+###
+
+2:08:38 (company database info)
