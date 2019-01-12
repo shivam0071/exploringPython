@@ -3,6 +3,7 @@ print(dict)
 
 
 # print((sorted(dict.keys())
+# get value sorted according to the keys
 res = map(lambda y: dict.get(y),sorted(dict.keys()))
 print(list(res))
 
@@ -10,7 +11,7 @@ print(sorted(dict.items()))
 # print(sorted(dict.items(),key = lambda y:))
 ls = [[1,3],[33,1],[110,30],[11,366]]
 print(ls)
-print(sorted(ls,key=lambda x:x[1]))
+print(sorted(ls,key=lambda x:x[0]))
 
 student_tuples = [
     ('john', 'A', 15),

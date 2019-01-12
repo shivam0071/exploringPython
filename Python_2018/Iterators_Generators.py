@@ -1,7 +1,8 @@
 #when you override methods such as __iter__ and next() then that class becomes an iterator (2.7)
 
 #iterator is a more general concept:
-# any object whose class has a next method (__next__ in Python 3) and an __iter__ method that does return self
+# any object whose class has a next method (__next__ in Python 3) and an __iter__ method
+# that does return self
 
 
 #Every generator is an iterator, but not vice versa. A generator is built by calling a

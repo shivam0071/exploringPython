@@ -46,7 +46,8 @@
 # READ MORE :-
 # https://docs.python.org/3/howto/unicode.html
 
-# One-character Unicode strings can also be created with the chr() built-in function, which takes integers and returns a Unicode string of length 1 that contains the corresponding
+# One-character Unicode strings can also be created with the chr() built-in function,
+# which takes integers and returns a Unicode string of length 1 that contains the corresponding
 #  code point. The reverse operation is the built-in ord()
 #  function that takes a one-character Unicode string and returns the code point value:
 
@@ -62,7 +63,8 @@ print("My version Number: {}".format(sys.version))
 #
 # 2.) Manipulating Globals in a function using global keyword is not recommended (pylint fails)
 #
-# 3.) this - export abc=67 if written in cmd or shell assigns an OS level variable which can be used inside a program
+# 3.) this - export abc=67 if written in cmd or shell assigns an OS level variable
+# which can be used inside a program
 # import os
 # os.environ.get('abc')
 #
