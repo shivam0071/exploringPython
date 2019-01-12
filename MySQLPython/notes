@@ -138,11 +138,11 @@ example -> INSERT INTO student(name, major) VALUES('Shaan', 'Actor')
 
 UPDATE and DELETE:-
 
-* UPDATE student set major = 'Bio' where major='Biology';
+* UPDATE student SET major = 'Bio' where major='Biology';
 
 * where major = 'Bio' OR major = 'Chemstry'
 
-* UPDATE student set name = 'Shaan', major = 'Actor' where id = 1
+* UPDATE student SET name = 'Shaan', major = 'Actor' where id = 1
 
 DELETE :
 DELETE FROM student where student_id = 3;
@@ -159,6 +159,10 @@ ORDER BY major, student_id
 * SELECT * from student LIMIT 2;
 
 * SELECT * from student ORDER BY name LIMIT 2 ;
+
+* SELECT * from student where name IN ('Mike', 'Jack') AND student_id > 2;
+
+* select * from student where major REGEXP 'Comp*';  (using REGEX)
 
 ###
 -- (comment)

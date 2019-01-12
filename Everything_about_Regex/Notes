@@ -25,8 +25,8 @@ so the implication is or
 
 eg - <H[123456]>", which matches <H1>, <H2>, <H3> etc
 
-    (3.a) Character class metacharacter ->  - (Dash) (Note that a dash is a metacharacter only within a character class  otherwise it
-     matches the normal dash character.)
+    (3.a) Character class metacharacter ->  - (Dash) (Note that a dash is a metacharacter only
+    within a character class  otherwise it matches the normal dash character.)
 
     (dash) indicates a range of characters: !<H[1-6]>" is identical to the previous
     example. [0-9]"
@@ -108,7 +108,12 @@ $                      dollar                                   the position at 
 |                        or; bar                                matches either expression it separates
 ()                   parentheses                             used to limit scope of !;", plus additional uses
 
+\< \>  use \b in place of them for exact match **
+
 Optional ITEMS
+
+Quantifiers:-
+
 6.) Metacharacter (?) (question mark) :-
 The metacharacter ? (question mark) means optional. It is placed after the character that is
 allowed to appear at that point in the expression, but whose existence isn't actually
@@ -123,4 +128,67 @@ acts as one complete unit -- ()?
 eg- in order to match 4th or 4 we can -> 4(th)?
 
 
-Other Quantifier s: Repetition (18)
+# Other Quantifier s: Repetition (18)
+
+7.) Metacharacter (+) (plus) :-
+The metacharacter !+" means one or more of the immediately-preceding item,
+it tries to match as many times as possible,
+but different in that it fails if it can't match at least once.
+
+
+
+8.) Metacharacter (*) (star) :-
+* means any number, including none of the item.
+try to match it as many times as possible, but it's OK to settle for nothing if need be.
+
+Example:-
+any version of this
+<HR SIZE=14 >
+<HR(space)+SIZE(space)*=(space)*[0-9]+(space)*>",
+
+2.) find <HR> but the SIZE attribute is optional
+<HR( +SIZE *= *[1-9]+)? *>
+use ?: inside a parenthesis to use it as a subexpression and not as a group
+<HR(?: +SIZE *= *[1-9]+)? *>
+
+PAGE 20 Parenthesis and Backreferences
+
+9.)Interval Quantifiers :- {min, max}
+For example
+{3, 12} -  matches up to 12 times if possible, but settles for three
+[a-zA-Z]{1,5} -
+{0,1} - Same as question mark
+
+
+10.) BACK REFERENCING:- Wouldn't it be nice if we could match one generic word, and then say
+now match the same thing again?
+Backreferencing is a regular-expression feature that allows you to match new
+text that is the same as some text matched earlier in the expression.
+
+In order to find the double occurence of a word we can use
+\<the +the\> can be replaced by
+
+"\<([A-Za-z]+) +\1\>"
+
+Here \1 is a special meta sequence
+the special metasequence !\1" represents
+that text later in the regular expression,
+
+SO \1 remebers first sequence matched  - ([A-Za-z]+)
+
+we can heve \2 \3 \4
+
+([a-z])([0-9])\1\2
+here
+the \1" refers to the text matched by [a-z]", and \2" refers
+to the text matched by [0-9].
+
+Paranthesis is important
+
+
+\ :-
+In order to match a metacharacter use backslash to escape it
+
+
+Page 23
+Linguistic Diversification

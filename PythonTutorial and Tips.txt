@@ -185,6 +185,7 @@ ________________________________________________________________________________
 
 
 LIST methods :- Implemented as array of pointers to objects(in cpython)
+checkout -  https://wiki.python.org/moin/TimeComplexity
 
 
 ls.count('shiv')
@@ -260,8 +261,17 @@ u can't
 tu[0] = 77 
 
 
-The elements can be accessed by unpacking,indexing,,where as lists are generally mutable and are accessed by iterating over the list
+The elements can be accessed by unpacking,indexing,,where as lists are generally
+mutable and are accessed by iterating over the list
 
+Tuples may be constructed in a number of ways:
+    Using a pair of parentheses to denote the empty tuple: ()
+    Using a trailing comma for a singleton tuple: a, or (a,)
+    Separating items with commas: a, b, c or (a, b, c)
+    Using the tuple() built-in: tuple() or tuple(iterable)
+
+tuple('abc') returns ('a', 'b', 'c') and
+tuple( [1, 2, 3] ) returns (1, 2, 3)
 
 tuple  = ()
 
@@ -273,6 +283,13 @@ Unpacking 
 t (1,2,3)
 
 a,b,c = t
+
+Why to use tuple over list
+1.) Use tuple when the data is not changing
+2.) A tuple is space friendly while a list takes a lot of space
+
+check by using sys module
+sys.getsizeof((1,2))
 
 
 
@@ -421,7 +438,8 @@ If not, insert key with a value of d and return d (defaults to None).
 
 eg - dic1.setdefault(10, 's')
 
-if you try to override a key then the key with last value is only accepted...others are not considered
+if you try to override a key then the key with last value is only accepted...
+others are not considered
 
 
 basic operations
@@ -1101,6 +1119,9 @@ Map: As the name suggests... A map function is used for mapping of a. sequence
 a = list(map(lambda y: y+2,range(10)) 
 # [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 
+can also be used to convert list of string ['1','2','3'] to [1,2,3]  n vice versa
+list(map(int,a))
+
 
 Filter : Filter filters the stuff based on true and false...if something is
 
@@ -1375,7 +1396,8 @@ add = DoAdd42(1)
 mul = DoMul42(2)
 print(add.do_something(),mul.do_something())
 
-A class that is derived from an abstract class cannot be instantiated unless all of its abstract methods are overridden.
+A class that is derived from an abstract class cannot be instantiated unless all of
+its abstract methods are overridden.
 
 You may think that abstract methods can't be implemented in the abstract base class.
 This impression is wrong: An abstract method can have an implementation in the abstract class!
