@@ -1,4 +1,6 @@
 https://www.youtube.com/watch?v=HXV3zeQKqGY&t=1213s
+https://www.mikedane.com/databases/sql/nested-queries/
+
 
 Database - Collection of Similar Data or related information
 
@@ -77,6 +79,7 @@ BLOB    -- Binary, Large Object
 DATE    -- 'YYYY-MM-DD'
 TIMESTAMP -- 'YYYY-MM-DD HH:MM:SS'
 
+use test_db1;
 
 CREATE TABLE student (
 student_id INT,
@@ -164,6 +167,11 @@ ORDER BY major, student_id
 
 * select * from student where major REGEXP 'Comp*';  (using REGEX)
 
+* SELECT DISTINCT sex FROM employee; ( All the unique entries )
+
+*
+
+
 ###
 -- (comment)
 <
@@ -176,3 +184,190 @@ OR
 ###
 
 2:08:38 (company database info)
+
+Foreign Key Syntax:
+
+  mgr_id INT,
+  FOREIGN KEY(mgr_id) REFERENCES employee(emp_id) ON DELETE SET NULL
+
+
+Makinng foreign keys after creating a table
+
+ALTER TABLE employee
+ADD FOREIGN KEY(branch_id)
+REFERENCES branch(branch_id)
+ON DELETE SET NULL;
+
+ALTER TABLE employee
+ADD FOREIGN KEY(super_id)
+REFERENCES employee(emp_id)
+ON DELETE SET NULL;
+
+
+COMPOSITE KEY and ON DELETE CASCADE
+
+CREATE TABLE works_with (
+  emp_id INT,
+  client_id INT,
+  total_sales INT,
+  PRIMARY KEY(emp_id, client_id),
+  FOREIGN KEY(emp_id) REFERENCES employee(emp_id) ON DELETE CASCADE,
+  FOREIGN KEY(client_id) REFERENCES client(client_id) ON DELETE CASCADE
+);
+
+
+
+FUNCTIONS :-
+
+-- Find the number of employees
+SELECT COUNT(super_id)
+FROM employee;
+
+-- SELECT DISTINCT CITY from STATION where MOD(ID, 2) = 0;  (EVEN NUMBERS)
+
+-- SELECT COUNT(CITY) - COUNT(DISTINCT CITY) AS N FROM STATION (MINUS and UNIQUE SYNTAX)
+
+-- select CITY, length(CITY)from station order by length(CITY), city limit 1;
+-- select CITY, length(CITY)from station order by length(CITY) desc, city limit 1
+
+-- Find the average of all employee's salaries
+SELECT AVG(salary)
+FROM employee;
+
+-- Find the sum of all employee's salaries
+SELECT SUM(salary)
+FROM employee;
+
+-- Find out how many males and females there are
+SELECT COUNT(sex), sex
+FROM employee
+GROUP BY sex;
+
+COUNT(sex)	sex
+6	        M
+3	        F
+
+
+-- Find the total sales of each salesman
+SELECT SUM(total_sales), emp_id
+FROM works_with
+GROUP BY client_id;
+
+-- Find the total amount of money spent by each client
+SELECT SUM(total_sales), client_id
+FROM works_with
+GROUP BY client_id;
+
+
+
+ WILD CARDS
+
+% = any noo of  characters,
+_ = one character
+
+SELECT *
+FROM client
+WHERE client_name LIKE '%LLC';
+
+
+
+UNION - To merge many select statements
+
+SELECT employee.first_name AS Employee_Branch_Names
+FROM employee
+UNION
+SELECT branch.branch_name
+FROM branch;
+
+
+They should have same no of columns and same datatypes
+
+
+
+JOINS:-
+Combining information from different tables into a single result
+
+-- Add the extra branch
+INSERT INTO branch VALUES(4, "Buffalo", NULL, NULL);
+
+-- INNER JOIN
+
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+JOIN branch    -- LEFT JOIN, RIGHT JOIN
+ON employee.emp_id = branch.mgr_id;
+
+
+
+NESTED QUERY
+3:11:00
+
+-- Find names of all employees who have sold over 50,000
+SELECT employee.first_name, employee.last_name
+FROM employee
+WHERE employee.emp_id IN (SELECT works_with.emp_id
+                          FROM works_with
+                          WHERE works_with.total_sales > 50000);
+
+-- Find all clients who are handles by the branch that Michael Scott manages
+-- Assume you know Michael's ID
+SELECT client.client_id, client.client_name
+FROM client
+WHERE client.branch_id = (SELECT branch.branch_id
+                          FROM branch
+                          WHERE branch.mgr_id = 102);
+
+
+ON DELETE
+3:22
+
+1.) ON DELETE SET NULL
+
+when a foreign key references to some other column of some table, then by using this option
+whenever you delete that reference the foreign key is set to NULL
+
+2.) ON CASCADE :
+
+This deletes the entire row of the foreign key table
+
+use (1) when there is no dependency on the foreign key
+use (2) when the foreign key is also the primary/composite key
+
+
+TRIGGERS
+
+-- TRIGGERS
+
+-- CREATE
+--     TRIGGER `event_name` BEFORE/AFTER INSERT/UPDATE/DELETE
+--     ON `database`.`table`
+--     FOR EACH ROW BEGIN
+-- 		-- trigger body
+-- 		-- this code is applied to every
+-- 		-- inserted/updated/deleted row
+--     END;
+
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+        INSERT INTO trigger_test VALUES('added new employee');
+    END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE
+    TRIGGER my_trigger3 BEFORE INSERT
+    ON employee
+    FOR EACH ROW BEGIN
+         IF NEW.sex = 'M' THEN
+               INSERT INTO trigger_test VALUES('added male employee');
+         ELSEIF NEW.sex = 'F' THEN
+               INSERT INTO trigger_test VALUES('added female');
+         ELSE
+               INSERT INTO trigger_test VALUES('added other employee');
+         END IF;
+    END$$
+DELIMITER ;
