@@ -192,3 +192,8 @@ In order to match a metacharacter use backslash to escape it
 
 Page 23
 Linguistic Diversification.
+
+29th Jan 2019
+A string within double quotes :-
+ -> "[^"]*"
+

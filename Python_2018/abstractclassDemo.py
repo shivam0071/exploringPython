@@ -22,9 +22,15 @@ class DoAdd42(AbstractClassExample):
 
 class DoMul42(AbstractClassExample):
 
+  def __init__(self, value):
+    super().__init__(value)
+    self.value2 = value
+
   def do_something(self):
     return self.value * 42
 
 add = DoAdd42(1)
 mul = DoMul42(2)
 print(add.do_something(),mul.do_something())
+
+

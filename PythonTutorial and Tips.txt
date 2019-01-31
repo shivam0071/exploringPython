@@ -21,17 +21,17 @@ D - Order
 There are many python stuff which i think i am going to forget
 
 
-Closure
+Closure    ✔
 
 Decorator  ✔
 
-ABC
+ABC        ✔
 
-Inheritance Concepts and Polymorphism
+Inheritance Concepts and Polymorphism  ✔
 
-Iterator
+Iterator    ✔
 
-Generator
+Generator   ✔
 
 Lambda  ✔
 
@@ -43,17 +43,17 @@ Protocols
 
 Threading
 
-All the syntax of list comprehinsion and map reduce lambda etc ✔
+All the syntax of list comprehension and map reduce lambda etc ✔
 
 Metaclasses and Stuff
 
-abstract class and stuff
+abstract class and stuff  ✔
 
 static methods ✔
 
-class methods
+class methods ✔
 
-Using Super
+Using Super ✔
 
 Properties
 
@@ -72,7 +72,7 @@ Python is dynamic Type -- variable types are given at run time and not at compil
 Slicing doesn't gives array index out of range
 
 
-Hashable Objects-- All immatable objects are hashable (tuples Strings etc)
+Hashable Objects-- All immutable objects are hashable (tuples Strings etc)
 
 
 and all mutable objects are unhashable (list,dict) 
@@ -214,7 +214,11 @@ sorted(list,key,reverse) #returns sorted list
 
 you can make ur own functions in keys
 
-ls[::-1]  
+ls[::-1]
+a[::-1]    # all items in the array, reversed
+a[1::-1]   # the first two items, reversed
+a[:-3:-1]  # the last two items, reversed
+a[-3::-1]  # everything except the last two items, reversed 
 
 convert all string in a list to int -- Use MAP class
 list(map(int, ['4', '5']))
@@ -867,6 +871,15 @@ dynamic function is another way of defining the closure.
 the inner function remembers the environment in which it was created
 In other words, the inner function has access to the outer function’s variables and parameters.
 
+Wiki:-
+a closure is a record storing a function[a] together with an environment.[1]
+The environment is a mapping associating each free variable of the function
+(variables that are used locally, but defined in an enclosing scope) with the value or
+reference to which the name was bound when the closure was created.[b] Unlike a plain function,
+a closure allows the function to access those captured variables through the closure's copies of
+their values or references, even when the function is invoked outside their scope.
+
+
 example
 def startAt(start):
 	def incrementBy(inc):
@@ -1363,6 +1376,30 @@ type(name of the class,
 
 Abstract Base Class
 
+Abstraction in General:-
+
+1.) For a class, there can be so many attributes but we only keep those attributes
+which are required for our application
+
+2.) Also we have have so many behaviour for that class(real world entity) but we only keep the
+required behaviour
+
+3.) We don't care how it's implemented, all we care about it using it
+eg - All the BIFs ...print(), len() , range()
+
+
+ENCAPSULATION -
+
+1.) Data and Function binded together in a class forms an Encapculation
+
+2.) like a Capsule saves the drugs from outer environment
+Encapsulation saves the class's data (access specifiers- private public protected)
+Example- we can put the attributes as private and functions as public ( here we
+are giving access to data in controlled manner)
+So here "public func()" public is an Interface (not the JAVA C++) (but like a tv remote control
+which controls the TV where TV is data and remote is public interface[controlled access])
+
+
 Abstract classes are classes that contain one or more abstract methods.
 An abstract method is a method that is declared, but contains no implementation.
 Abstract classes may not be instantiated, and require subclasses to provide implementations
@@ -1429,10 +1466,10 @@ class Dog:
     def bark(self):
         print('grrrrrrrrrrrr...woof woof')
 
-    def rollback():                 #Class method made implicitly
+    def rollback():                 #Static method made implicitly
         print(Dog.count,Dog.dogs)
 
-    @staticmethod                   #Class method made explicitly
+    @staticmethod                   #Static method made explicitly
     def jump():
         print(Dog.count,Dog.dogs)
         print("JUMP")
@@ -1451,6 +1488,16 @@ grrrrrrrrrrrr...woof woof
 JUMP
 2 ['Scrappy', 'Tommy']
 JUMP
+
+
+CLASS METHOD
+
+class method uses @classmethod decorator
+@classmethod
+def demo(cls, name):
+
+can be called using a Class.method() ,
+can also be used as an alternate constructor,( just return the cls)
 ____________________________________________________________________________________
 
 
@@ -1487,6 +1534,22 @@ print(expensive(4,3,'k'))
 print(expensive(2,3,'Shivam'))
 
 ____________________________________________________________________________________________
+
+INHERITANCE:-
+1.) One Object acqiures properties of other object through relationship (re useability)
+2.) and can also extend the properties
+
+POLYMORPHISM:-
+Eg -> Age of Empires :-
+When we press the attack button after selecting all the army units
+They all attack but each unit is attacking in their own way..
+So here attack is a common function (polymorphed)
+
+So here attack is an abstract function which accepts an army object
+as a parameter
+Now as each unit IS A ARMY so attack accepts every unit object
+ while the unit is overrinding the attack function accordingly
+
 
 class methods and stuff
 
