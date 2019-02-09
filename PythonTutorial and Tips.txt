@@ -95,7 +95,7 @@ Strings
 Strings are immutable(that means it doesn't support str[1] = e ) {this is trying to make changes to an alphabet residing in that memory location...which we can't...)
 
 You have to make a new string...
-
+str class in builtins.py
 
 Supports 
 
@@ -181,8 +181,26 @@ format(s, '*^20')
 
 (works with list of strings aswell )
 
+S.casefold() -> str
+Return a version of S suitable for caseless comparisons.
+
+s.partition('i')
+('Sh', 'i', 'vam')
+
 ___________________________________________________________________________________________________
 
+CHAR:-
+
+<str> = chr(<int>)  # Converts int to unicode char.
+<int> = ord(<str>)  # Converts unicode char to int.
+>>> ord('0'), ord('9')
+(48, 57)
+>>> ord('A'), ord('Z')
+(65, 90)
+>>> ord('a'), ord('z')
+(97, 122)
+
+_________________________________________________________________________________________
 
 LIST methods :- Implemented as array of pointers to objects(in cpython)
 checkout -  https://wiki.python.org/moin/TimeComplexity
@@ -236,7 +254,8 @@ ls._setitem_(key,value) # replaces the content
 ls._contains_(value) #True or False
 
 
-there is another way by which we can remove a list element and it doesn't returns a value(different than pop)
+there is another way by which we can remove a list element and it doesn't returns a
+value(different than pop)
 
 
 del ls[0]
@@ -245,8 +264,8 @@ we can even use slicing in this
 
 
 
-Methods like insert(),remove(), sort() that modify the list have no return value printed - they return default None
-
+Methods like insert(),remove(), sort(), reverse() that modify the list have no return value printed -
+they return default None
 This is a design principal for all mutable data structures in Python
 
 
@@ -315,7 +334,8 @@ zip([[1,2,3],[4,5,6]])
 OR
 
 zip(*SequencelikeaboveOne)
-
+>> list(zip(*[[1,2],[4,5]]))
+[(1, 4), (2, 5)]
 
 'Shivam' [::-1] returns  mavihS
 
@@ -371,8 +391,9 @@ s.copy()
 
 s.update(set(sequence))
 
-
-
+>>>a = frozenset([1,111,1111,11,111,11,11,11,11,2])
+>>>a
+frozenset({1, 2, 11, 111, 1111})
 
 
 
@@ -403,7 +424,7 @@ A dictionary is an unordered set of key : Value pairs where keys are unique
 A dictionary is a mapping between a set of keys and values. The keys() method of a
 dictionary returns a keys-view object that exposes the keys. A little-known feature of
 keys views is that they also support common set operations such as unions, intersections,
-and differences
+and differences (frozenset)
 
 dic1 = {1:2,4:5,6:7}
 dic2 = {1:2,6:7}
@@ -420,6 +441,8 @@ y = {'b': 3, 'c': 4}
 
 Key Value Pairs 
 
+**kwargs returns a dictionary
+
 a= {1:2,3:4,5:6}
 
 iterates over keys
@@ -428,11 +451,9 @@ iterates over keys
 
 6 in a - False
 
+(update, get, setdefault(k,val), clear, copy, keys , items, values, fromkeys, pop(k), popitem())
 
 a.get(key) #gets the value
-
-**kwargs returns a dictionary
-
 
 a.update(dict)  adds a new dictionary to the current
 
@@ -459,6 +480,26 @@ dic.keys()
 
 dic.values()
 [values]
+
+dic.pop(key)
+pops the key-value and returns the value
+
+dic.popitem()
+pops the last item from the dictionary and returns a tuple of (key, value)
+
+static method
+fromkeys
+dict.fromkeys(iterable)
+
+>>dict.fromkeys('Shivam')
+{'S': None, 'h': None, 'i': None, 'v': None, 'a': None, 'm': None}
+
+TRICK
+We can remove duplicates from iterable without using a set
+>> list(dict.fromkeys('ShivammmSSvv'))
+['S', 'h', 'i', 'v', 'a', 'm']
+>> ''.join(list(dict.fromkeys('ShivammmSSvv')))
+'Shivam'
 
 tel = {1:6,3:7}
 
@@ -521,14 +562,23 @@ but in fact it isn't. It is an object which returns the successive items of the
 desired sequence when u iterate over it, but it doesn't really make the list,
 thus SAVING SPACE 
 
+range(to_exclusive)
+range(from_inclusive, to_exclusive)
+range(from_inclusive, to_exclusive, step_size)
+range(from_inclusive, to_exclusive, -step_size)
+from_inclusive = <range>.start
+to_exclusive   = <range>.stop
+
+
 Now when we iterate over for x in range (10) then the value of x
 is retained #x = 9 but using LIST Comprehinsion this can be avoided
 
+>>>999999999999999 in range(1000000000000000)
+True (almost instantely) maybe (test_num < =  0 - end_num)
+
 
 Iterator and Iterables :
-
 Iterators - For statement, list()
-
 they iterate over Iterables
 
 a list() creates lists from iterables

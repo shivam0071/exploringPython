@@ -59,3 +59,18 @@ str4 = "This time is 11:55 but soon it'll be 15:30 and after that it'll be 00:59
 co6 = re.compile(r"(?:0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9]")
 co7 = re.compile(r"(?:[01]?[0-9]|2[0-3]):[0-5][0-9]")
 print(re.findall(co7, str4))
+
+
+
+#4 Reading a TAG
+str5 = '''
+<TAG>
+              <h1>Some TEXT<h1>
+              <h1>Some TEXT<h1>
+              <h1>Some TEXT<h1>
+              <h1>Some TEXT<h1>
+</TAG>
+'''
+
+co8 = re.compile(r'<TAG>[\s\S]*?</TAG>')
+print(re.findall(co8, str5)[0])

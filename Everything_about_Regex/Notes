@@ -197,3 +197,11 @@ Linguistic Diversification.
 A string within double quotes :-
  -> "[^"]*"
 
+
+31st Jan 2019
+Remember, though, that a backslash within a character class is not special at
+all with most versions of egr ep, so it provides no escape services in such a
+situation.
+
+
+Page 37
