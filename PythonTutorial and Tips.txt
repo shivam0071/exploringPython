@@ -70,14 +70,114 @@ Python is dynamic Type -- variable types are given at run time and not at compil
 
 
 Slicing doesn't gives array index out of range
+________________________________________________________________________________________
 
+THE IMMUTABLE CONFUSION ( are tuples immutable?)
+
+Immutable - An object with a fixed value. Immutable objects include numbers, strings and
+"tuples". Such an object cannot be altered. A new object has to be created if a diffe
+rent value has to be stored. They play an important role in places where a const
+ant hash value is needed, for example as a key in a dictionary
 
 Hashable Objects-- All immutable objects are hashable (tuples Strings etc)
-
+Integers (and floats, Booleans, strings, frozen sets, and bytes) are immutable
 
 and all mutable objects are unhashable (list,dict) 
+Lists (and dictionaries, sets, arrays, and bytearrays), on the other hand, are
+mutable
+BUT
+Mutable objects can change their value but keep their id()
+
+== VS is
+The == equality operator compares values, while the is operator compares identit
+ies. You can consider x is y to be shorthand for id(x) == id(y)
+a = [1,2]
+b = a
+
+b is a (Identity)
+True
+id(b) == id(a)
+True
+a == b (VALUE)
+True
+
+a = [1,2]
+b = [1,2]
+
+a == b (value)
+True
+a is b
+False
+id(a) == id(b)
+False
+
+HASHABILITY:-
+According to the glossary in the official Python documentation, "An object is ha
+shable if it has a hash value which never changes during its lifetime", that is,
+ if the object is immutable. (There are a couple other requirements concerning t
+he __hash__() and __eq__()
+
+A hash is an integer that depends on an object's value, and objects with the sam
+e value always have the same hash. (Objects with different values will occasiona
+lly have the same hash too. This is called a hash collision.) While id() will re
+turn an integer based on an object's identity, the hash() function will return a
+n integer (the object's hash) based on the hashable object's value:
+
+Immutable objects can be hashable, mutable objects can't be hashable. This is im
+portant to know, because only hashab
+le objects can be used as keys in a dictionary or as items in a set. Since hashe
+s are based on values and only immutable objects can be hashable, this means tha
+t hashes will never change during the object's lifetime.
+
+a = (1,2,3)
+b = (1,2,3)
+
+a==b
+True
+
+a is b (a and b are different objects with different identities)
+False
+
+hash(a)  (hash is based on values and not identities)
+-378539185
+hash(b)
+-378539185
+
+Now these hashable objects can be used as dictionary keys
+
+spam = {('a', 'b', 'c'): 'hello'}
+
+BUT
+
+spam = {('a', 'b', [1, 2, 3]): 'hello'}
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'list'
+
+a tuple (which should be immutable) that contains a mutable list cannot be hashe
+d. This is because the hash of the tuple depends on the tuple's value, but if th
+at list's value can change, that means the tuple's value can change and therefor
+e the hash can change during the tuple's lifetime. But if we go back to the glos
+sary definition of hashable, a hash is never supposed to change during the objec
+t's lifetime.
+
+official Python documentation's definition of immutable and mutable: "An object
+with a fixed value" and "Mutable objects can change their value",
+So basically its both and it depends on the case
+
+https://inventwithpython.com/blog/2018/02/05/python-tuples-are-immutable-except-
+when-theyre-mutable/
+
+https://stackoverflow.com/questions/17585730/what-does-hash-do-in-python
+
+https://stackoverflow.com/questions/9755990/why-can-tuples-contain-mutable-items/9756028#9756028
+
+https://mail.python.org/pipermail/python-dev/2018-February/152117.html
+
+https://nedbatchelder.com/text/names.html
 
 
+_______________________________________________________________________________________
 if-else -  Another way
 
 
@@ -350,6 +450,14 @@ Sets:-. Mutable
 a set is an unordered collection with no duplicate elements.
 basic uses includes membership testing and eliminating duplicate entries
 
+A set can only have immutable or hashable objects
+
+a = set([1,2,4,[22,3]])
+Traceback (most recent call last):
+  File "<input>", l
+ine 1, in <module>
+TypeError: unhashable type: 'list'
+
 
 Supports union intersection difference and symmetric difference
 
@@ -425,6 +533,8 @@ A dictionary is a mapping between a set of keys and values. The keys() method of
 dictionary returns a keys-view object that exposes the keys. A little-known feature of
 keys views is that they also support common set operations such as unions, intersections,
 and differences (frozenset)
+
+https://docs.python.org/2/faq/design.html#how-are-dictionaries-implemented
 
 dic1 = {1:2,4:5,6:7}
 dic2 = {1:2,6:7}
@@ -574,7 +684,7 @@ Now when we iterate over for x in range (10) then the value of x
 is retained #x = 9 but using LIST Comprehinsion this can be avoided
 
 >>>999999999999999 in range(1000000000000000)
-True (almost instantely) maybe (test_num < =  0 - end_num)
+True (almost instantely) maybe (test_num < =  0 to end_num)
 
 
 Iterator and Iterables :
@@ -769,7 +879,7 @@ str.zfill()
 
 Keyword args can also be used in Format
 
-'{Shaan}'.format(Shaan:'cool')
+'{Shaan}'.format(Shaan = 'cool')
 
 
 An optional : and format specifier can follow the field name {0:3f}
@@ -806,6 +916,9 @@ a -- append
 
 b -- binary (images,pickle)
 
+More At:-
+https://stackoverflow.com/questions/16208206/confused-by-python-file-mode-w
+
 with open (file,w) as file:
 
     pass
@@ -814,7 +927,7 @@ with open (file,w) as file:
 No need to close the file here
 
 
-Whenever a file is reas the cursor moves and it stays there so
+Whenever a file is read the cursor moves and it stays there so
 
 
 f.read() -- reads the whole file
@@ -854,7 +967,7 @@ to a file as while reading it we have to convert it back to int..so in order to 
 numbers,list, tuple or dictionary we can use json module
 
 
-json.dumps([1,2,3,4,5,]
+json.dumps([1,2,3,4,5,])
 
 [1,2,3,4,5]
 
@@ -1051,7 +1164,7 @@ checkout closure_decorator.py for decorators with args and class decorators
 Deco with args:-
 1.)using  triple functions:
 the outermost function act as a decorator for a decorator and returns a decorator function lol
-which then acts like a not=rmal decorator
+which then acts like a normal decorator
 So when we say @outermost_Deco(args1,args2)
 this outermost gets called which returns a decorator ( the call is made without calling the normie
 function)
@@ -1184,6 +1297,8 @@ a = list(map(lambda y: y+2,range(10)) 
 
 can also be used to convert list of string ['1','2','3'] to [1,2,3]  n vice versa
 list(map(int,a))
+>>>list(map(str, a))
+['1', '2', '4', '5']
 
 
 Filter : Filter filters the stuff based on true and false...if something is
@@ -1203,7 +1318,16 @@ It takes 2 or more ?parameters at a time
 
 Example- ls4 = functools.reduce(lambda x,y : x if x> y else y, nlist2)
 
+a = [1,2,3,4,5,6,7,8,9,10]
+def mul(x, y):
+  return x*y
 
+>>>functools.reduce(mul,a)
+3628800
+
+Note that we are not calling mul in the reduce..just passing the mul
+function as an argument so it gets called by reduced
+Similary we can use int, str, bool, float etc
 
 CLASSES
 
@@ -1288,7 +1412,9 @@ to the middle scope containing the module’s global names.
 
 To rebind variables found outside of the innermost scope,
 the nonlocal statement can be used; if not declared nonlocal,
-those variables are read-only (an attempt to write to such a variable will simply create a new local variable in the innermost scope, leaving the identically named outer variable unchanged
+those variables are read-only (an attempt to write to such a variable will simply create a 
+new local variable in the innermost scope, leaving the identically named outer variable
+unchanged
 
 
 eg - 
@@ -1605,4 +1731,9 @@ class methods and stuff
 
 
 using SUPER
+
+Go to 10 things python coder should know for more
+and Interview Question from Interview folder
+
+
 
