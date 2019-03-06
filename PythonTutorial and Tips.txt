@@ -823,7 +823,20 @@ INPUT AND OUTPUT
 
 str() and repr() converts objects to string however
 repr is more readable to interpreter and str() to human
+repr should be used in a way that it tell how the constructor would look
+or how we can create the object of a class
 
+if __repr__ is defined, and __str__ is not, the object will behave as though
+__str__=__repr__.
+So its important we define the __repr__
+
+repr(3)     str(3)
+'3'            '3'
+repr('3')   str('3')
+"'3'"          '3'
+
+see the difference ?
+https://stackoverflow.com/questions/1436703/difference-between-str-and-repr
 
 str('Hi')
 

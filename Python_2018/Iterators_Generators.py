@@ -71,8 +71,8 @@ for i, y1, y2, y3 in zip(range(stop), Yes(stop), Yes(stop),('yes' for _ in range
 
 #Coroutines:
 
-#yield forms an expression that allows data to be sent into the generator
-#Here is an example, take note of the received variable, which
+# yield forms an expression that allows data to be sent into the generator
+# Here is an example, take note of the received variable, which
 # will point to the data that is sent to the generator:
 
 def bank_account(deposited, interest_rate):
@@ -96,3 +96,87 @@ print(first_year_interest)
 #And now we can send data into the generator. (Sending None is the same as calling next.) :
 next_year_interest = my_account.send(first_year_interest + 1000)
 print(next_year_interest)
+
+
+# 2
+# Python3 program for demonstrating
+# coroutine execution
+
+def print_name(prefix):
+    print("Searching prefix:{}".format(prefix))
+    while True:
+        print('Inside while')
+        name = (yield)
+        print('After yield',name)
+        if prefix in name:
+            print('inside IF')
+            print(name)
+
+        # calling coroutine, nothing will happen
+
+
+corou = print_name("Dear")
+print(type(corou))
+# This will start execution of coroutine and
+# Prints first line "Searchig prefix..."
+# and advance execution to the first yield expression
+corou.__next__()
+
+# sending inputs
+corou.send("Atul")
+corou.send("Dear Atul")
+corou.send("Dear Shivam")
+corou.close()
+
+
+# Python3 program for demonstrating
+# coroutine chaining
+
+def producer(sentence, next_coroutine):
+    '''
+    Producer which just split strings and
+    feed it to pattern_filter coroutine
+    '''
+    tokens = sentence.split(" ")
+    for token in tokens:
+        next_coroutine.send(token)
+    next_coroutine.close()
+
+
+def pattern_filter(pattern="ing", next_coroutine=None):
+    '''
+    Search for pattern in received token
+    and if pattern got matched, send it to
+    print_token() coroutine for printing
+    '''
+    print("Searching for {}".format(pattern))
+    try:
+        while True:
+            token = (yield)
+            if pattern in token:
+                next_coroutine.send(token)
+    except GeneratorExit:
+        print("Done with filtering!!")
+
+
+def print_token():
+    '''
+    Act as a sink, simply print the
+    received tokens
+    '''
+    print("I'm sink, i'll print tokens")
+    try:
+        while True:
+            token = (yield)
+            print(token)
+    except GeneratorExit:
+        print("Done with printing!")
+
+
+pt = print_token()
+pt.__next__()
+pf = pattern_filter(next_coroutine=pt)
+pf.__next__()
+
+sentence = "Bob is running behind a fast moving car"
+producer(sentence, pf)

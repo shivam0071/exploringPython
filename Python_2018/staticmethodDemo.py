@@ -10,10 +10,10 @@ class Dog:
     def bark(self):
         print('grrrrrrrrrrrr...woof woof')
 
-    def rollback():                 #Class method made implicitly
+    def rollback():                 #Static method made implicitly
         print(Dog.count,Dog.dogs)
 
-    @staticmethod                   #Class method made explicitly
+    @staticmethod                   #Static method made explicitly
     def jump():
         print(Dog.count,Dog.dogs)
         print("JUMP")
