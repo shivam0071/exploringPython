@@ -60,7 +60,7 @@ def process_pace(n):
 
 if __name__ == '__main__':
   num = 50000000
-  threading_pace(num)
+  # threading_pace(num)
   process_pace(num)
   print('MAIN')
 

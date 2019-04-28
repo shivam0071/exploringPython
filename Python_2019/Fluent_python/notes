@@ -1,0 +1,6 @@
+
+Why len is not a method ?
+
+the length is simply read from a field in a C struct. Getting the number of items in a
+collection is a common operation and must work efficiently for such basic and diverse
+types as str,list, memoryview etc.

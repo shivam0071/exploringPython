@@ -30,4 +30,17 @@ class Vector:
     '''uses * (multiply vector by a number and not a number by a vector'''
     return Vector(self.x * scalar, self.y * scalar)
 
-  # page 12/ 37
+v = Vector(10,20)
+print(v, abs(v), v + Vector(22,22), v * 10, bool(Vector(0,0)))
+
+
+
+# the length is
+# simply read from a field in a C struct. Getting the number of items in a collection is a
+# common operation and must work efficiently for such basic and diverse types as str,
+# list, memoryview etc.
+
+# Further Read
+# https://docs.python.org/3/reference/datamodel.html
+
+# page - 19
