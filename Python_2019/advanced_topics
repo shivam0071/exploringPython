@@ -3,7 +3,7 @@ NEW TOPICS TO COVER
 1.) OS module and file handling
 2.) Collections module
 3.) subprocess
-4.) Request   ✔
+4.) Request   ✔ ( also inside folder Request_tutorial)
 5.) URLLIB
 6.) Threading and Its limitation
 7.) Multiprocess
@@ -15,6 +15,21 @@ NEW TOPICS TO COVER
 13.) Pandas
 14.) Kerberos Auth
 
+
+20/03/19 - 05/05/2019
+# WORKING ON #
+15.) LDAP3 (for Active Directory)
+16.) Elastic Search
+17.) Multiprocessing (Process, Pool, functool.partial)
+18.) concurrent.future (submit and map )
+19.) Logging and using logs with 17, 18 and threads (using configDict)
+20.) Config Parser
+21.) Arg Parse
+22.) Anytree
+23.) flask and flask-restful (micro-services)
+24.) Postgre DB
+25.) AWS reading S3 buckets using python
+26.) OS and shutil
 
 First Class Functions :-
 a programming language is said to have first-class functions if it treats functions
