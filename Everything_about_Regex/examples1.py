@@ -74,3 +74,9 @@ str5 = '''
 
 co8 = re.compile(r'<TAG>[\s\S]*?</TAG>')
 print(re.findall(co8, str5)[0])
+
+
+#5
+# named = re.compile(r"^(?P<name>'your pattern here')more patter that is not a group")
+# match = named.match("string to search")
+# match.groupdict() # returns a diction of all the keywords used..here its name
