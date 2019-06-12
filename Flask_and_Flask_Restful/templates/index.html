@@ -1,0 +1,23 @@
+>html>
+<head>
+    <title>FLASK</title>
+    <script type="text/javascript">
+        function httpGetAsync(theUrl, callback){
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange == function(){
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl, true);
+        xmlHTTP.snd(null);
+        }
+
+        httpGetAsync("http://127.0.0.1:5000/store", function(response){
+        alert(response);
+        })
+    </script>
+</head>
+<body>
+Hello, World!
+</body>
+</html>
