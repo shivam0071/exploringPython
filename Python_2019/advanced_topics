@@ -171,6 +171,17 @@ In particular, functions are provided which support file copying and removal.
 
 
 
+________________________________________________________________________________________________
 
+
+6.) THREADING
+https://docs.python.org/3/library/threading.html
+
+Thread-local data is data whose values are thread specific. To manage thread-loc
+al data, just create an instance of local (or a subclass) and store attributes o
+n it
+
+mydata = threading.local()
+mydata.x = 1
 
 
