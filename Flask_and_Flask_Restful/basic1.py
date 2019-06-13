@@ -1,6 +1,6 @@
 # REST are designed to be stateless....and be able to interact with resources
 
-from flask import Flask,render_template , request, jsonify # To take a dictionary and coverts in into  a json (string)
+from flask import Flask , request, jsonify # To take a dictionary and coverts in into  a json (string)
 
 app = Flask(__name__)
 

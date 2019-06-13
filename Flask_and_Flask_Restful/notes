@@ -1,0 +1,41 @@
+# REST are designed to be stateless....and be able to interact with resources
+# 201 = Created
+# 202 = accepted ... if creating an object takes time...we accept it
+
+# 400 = Bad Request
+
+requested_data = request.get_json(force=True)
+# get_json gets the payload data sent via POST
+# force means we do not need content-type in header...it will just look in the content and will
+format it accordingly # avoid using it
+
+# silent=True ...it doen't give an error but just returns none
+
+
+For authentication we will use Flask-JWT
+
+JWT is Json Web Token used for encoding the data
+example
+a user will send us username and password and we will send them a JWT token
+which is user ID
+when the client has JWT they can send that to us with any request
+and when they do that they tell us that they were previously authenticated
+
+app.secret_key = 'shaan_pokemon_trainer'
+# we will use this for encryption
+# this should be kept secret
+We will create a new file called security.py now, which will have some imp functions
+
+
+from werkzeug.security import safe_str_cmp # to compare the string regardless of encoding used
+
+
+jwt = JWT(app, authenticate, identity) # /auth
+JWT creates a new endpoint  /auth
+when we call /auth  we send it a username and a password
+the JWT take those username and pass to the authenticate function (just like oauth 2.0)
+so this /auth endpoint returns a JWT token that tells that the username and password are
+correct and this is indeed a genuine user
+now the Identity uses this JWT token to return the user information
+
+this endpoint is the first step and username and password is sent in the body POST
