@@ -185,3 +185,17 @@ mydata = threading.local()
 mydata.x = 1
 
 
+
+12.) Numpy
+
+Numpy is a Linear Algebra Library
+Its fast and has bindings to C libraries
+
+We will Explore NumPy arrays
+    1.) Vectors
+    2.) Matrices
+
+More @ Numpy_basics folder
+
+
+
