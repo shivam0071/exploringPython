@@ -856,6 +856,16 @@ Syntax :
 '{0} ---> {1} cool '.format('Shaan','Cool')
 
 
+# F String Formatting with padding
+>>> print(f"{name} {place},{thing}")
+Shaan Konoha,Kunai
+
+>>> print(f"{name:{10}} {place:{10}} {thing:{10}}")
+Shaan      Konoha     Kunai
+
+print(f"{name:{10}} {place:{10}} {thing:.>{10}}")
+Shaan      Konoha     .....Kunai
+
 
 for x in range (1,11):
 

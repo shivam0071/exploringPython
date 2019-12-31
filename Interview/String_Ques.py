@@ -1,4 +1,5 @@
 # Basic and Easy Questions
+range
 
 # 1) WAP of reverse a str1ing
 
@@ -66,3 +67,12 @@ line = 'asdf fjdk; afed, fjek,asdf, foo'
 import re
 print (re.split(r'[;,\s]\s*', line))
 # ['asdf', 'fjdk', 'afed', 'fjek', 'asdf', 'foo']
+
+
+c = 'shivamuchiha'
+v = [1,2,3,4,5,6,7,8,9,0]
+b = 'shivam'
+
+print("{} -> {}".format(c, c[:3:-1]))
+print("{} -> {}".format(v, v[:3:-1]))
+print("{} -> {}".format(b, b[:3:-1]))

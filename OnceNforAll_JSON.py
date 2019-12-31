@@ -24,6 +24,10 @@ print(dic)
 dictionaryToJson = json.dumps(dic, indent=2)
 print(dictionaryToJson)
 
+list3 = json.dumps(list1)
+print(list3, type(list3))
+list4 = json.loads(list3)
+print(list4, type(list4))
 
 #with open('demo1.json', 'w') as o:
 #    o.write(dictionaryToJson)
