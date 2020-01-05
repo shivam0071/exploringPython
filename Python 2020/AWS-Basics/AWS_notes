@@ -1,0 +1,20 @@
+
+03/01/2020
+Acronyms :
+S3 - Simple Storage Service
+ec2 - Elastic Compute
+vpc- Virtual Private Cloud
+rds - relation database service
+iam - identity and access management
+
+
+1.) IAM - identity and access management -
+Enables us to manage or access AWS services securely
+We can create users groups and use permissions to allow or deny their access to AWS resources
+
+Common Features
+1.) Manage Users and their Access
+2) Manager Access for Federated Users
+3.) Services with no additional charge
+4.) Fine grain access to AWS resources
+

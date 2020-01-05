@@ -1,0 +1,75 @@
+3/1/2020
+Page 142 Fluent Python
+
+
+1.) First Class Objects
+first class object in Python is the one which
+* which can be assigned to a variable
+* which can be created dynamically
+* which can be passed to a function and
+* which can be returned from a function
+
+
+2.) Functions are First Class Objects in Python
+
+
+4th Jan 2020
+3.) High Order Functions
+* the functions which accepts another function as its argument those functions are called higher order functions for example map filter and reduce are the higher order functions
+* with python3 list comprehensions were introduced so the need of map reduce and filter got reduced because the same task can be done using the list comprehensions
+* map filter and reduce used to return a list but in Python 3 they return a generator
+* and so it's better to use list comprehension because they are more readable and you can you just comprehension instead of map and filter
+* the reduced was built in function in Python 2 but now its included in in a module which is known as functools
+* from functools import reduce
+* the main task of reduce is to basically some up or you can say reduce iterable on a list sum we can simply use a function called sum
+
+
+4.) Lambda Functions :
+ The lamba functions should be used or are mostly use with the high order functions
+
+
+They are quite unreadable so its better to avoid using them in general code....
+
+
+5.) Callable :
+We can check if something is callable using callable function
+There are 7 different types of callables
+1.) User Defined Function
+2.) Built in Method
+3.) Built in functions
+4.) Method
+5.) Class (__new__ then __init__)
+6.) Class Instance ( by overriding ___call__)
+7.) Generator Function (yield)
+
+
+Trick - if you override __call__ then we can call the instance (pg 146)
+
+05/01/2020 - 2:45 PM
+Function Introspect
+dir(demo)
+lets look at the ones which makes functions as objects
+1.) __dict__ : a dictionary having variable details of an obj (user attributes)
+
+Example
+def demo()
+    return "Hello"
+
+>> demo.var1 = "shaan"
+>> demo.__dict__
+{'var2': 'Shivam'}
+
+# Keyword only argument...here we have to give b=value or else it will throw an error
+def demo2(a, *,b):
+    print(a, b)
+
+>> demo2(1,2)
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: demo2() takes 1 positional argument but 2 were given
+
+>> demo2(2,b=3)
+2 3
+
+# Page 150
