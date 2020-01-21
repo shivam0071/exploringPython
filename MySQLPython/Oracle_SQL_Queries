@@ -1,0 +1,83 @@
+Go to apex.oracle.com for accessing the database
+
+Tables -
+emp
+dept
+
+
+* Unique Values
+    SELECT DISTINCT job
+    from emp;
+
+* Where
+    SELECT *
+    from emp
+    WHERE job = 'MANAGER';  //(single quotes and manager is all caps)
+    AND sal = 1600
+    AND deptno = 30
+
+* NOT EQUA TO != / <>
+* Less than equal to <=
+* grater than equal to >=
+* OR - optional
+SELECT *
+FROM EMP
+WHERE JOB = 'MANAGER'
+OR JOB = 'SALESMAN'
+
+* IN CLAUSE
+Select *
+from EMP
+where deptno IN (20,30) --> Accepts a list type data?
+
+* NOT IN
+Select *
+from EMP
+where deptno NOT IN (20,30) --> Accepts a list type data?
+
+* BETWEEN
+SELECT *
+FROM emp
+where sal between 1000 and 2000 (both inclusive)
+
+* NOT BETWEEN
+SELECT *
+FROM emp
+where sal not between 1000 and 2000 (both inclusive)
+
+* is null / is not null
+* BETWEEN
+SELECT *
+FROM emp
+where COMM is null;
+
+* LIKE
+SELECT * FROM EMP
+WHERE JOB LIKE 'S%'
+
+% -> acts like star * ...returns anything
+
+
+# ALISASING
+
+SELECT ENAME "Employee Name", SAL SALARY, COMM COMMISION
+from EMP
+( DOUBLE QUOTES )
+
+OR
+
+SELECT ENAME AS "Employee Name", SAL AS SALARY, COMM COMMISION
+from EMP
+( DOUBLE QUOTES )
+
+|| PIPES ||
+Making Sentences using pipes
+
+Select 'Hello There!! I AM ' || ename as "Welcome"
+from EMP
+
+
+# ORDER BY
+To arrange the data is ascending or desc order
+
+select * from emp order by ename desc, sal desc
