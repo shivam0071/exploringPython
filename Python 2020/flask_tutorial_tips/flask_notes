@@ -1,0 +1,34 @@
+14-09-2020  09:43 AM Monday
+A Flask application is an instance of the Flask class. Everything about the application, 
+such as configuration and URLs, will be registered with this class.
+
+Instead of creating a Flask instance globally, you will create it inside a function. 
+This function is known as the application factory. Any configuration, registration, 
+and other setup the application needs will happen inside the function, then the application will be returned.
+
+
+We can run the application using
+> set FLASK_APP=flaskr
+> set FLASK_ENV=development
+> flask run
+
+the create_app code is in __init__.py 
+
+1.) __init__.py
+2.) db.py
+3.) schema.sql
+
+
+g is a special object that is unique for each request. 
+It is used to store data that might be accessed by multiple functions during the request. 
+The connection is stored and reused instead of creating a new connection 
+if get_db is called a second time in the same request.
+
+current_app is another special object that points to the Flask application handling the request. 
+Since you used an application factory, there is no application object when writing the rest of your code. 
+get_db will be called when the application has been created and is handling a request, 
+so current_app can be used.
+
+
+flask init-db
+There will now be a flaskr.sqlite file in the instance folder in your project.
