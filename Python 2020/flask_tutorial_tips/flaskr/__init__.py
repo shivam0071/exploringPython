@@ -48,4 +48,8 @@ def create_app(test_config=None):
     # Now that init-db has been registered with the app, 
     # it can be called using the flask command, similar to the run command from the previous page.
     
+    # Registering a blueprint
+    from . import auth
+    app.register_blueprint(auth.bp)
+
     return app

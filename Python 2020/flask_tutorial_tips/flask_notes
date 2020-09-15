@@ -32,3 +32,20 @@ so current_app can be used.
 
 flask init-db
 There will now be a flaskr.sqlite file in the instance folder in your project.
+
+
+VIEW
+A view function is the code you write to respond to requests to your application. 
+Flask uses patterns to match the incoming request URL to the view that should handle it. 
+The view returns data that Flask turns into an outgoing response. 
+Flask can also go the other direction and generate a URL to a view based on its name and arguments.
+
+
+BLUEPRINTS
+A Blueprint is a way to organize a group of related views and other code. 
+Rather than registering views and other code directly with an application, they are registered with a blueprint. 
+Then the blueprint is registered with the application when it is available in the factory function.
+
+Lets make 2 blueprints 
+1 for auth
+other for fb posts etc
