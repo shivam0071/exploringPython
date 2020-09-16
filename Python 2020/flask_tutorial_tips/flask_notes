@@ -49,3 +49,28 @@ Then the blueprint is registered with the application when it is available in th
 Lets make 2 blueprints 
 1 for auth
 other for fb posts etc
+
+
+TEMPLATES
+Jinja looks and behaves mostly like Python. Special delimiters are used to distinguish 
+Jinja syntax from the static data in the template. Anything between {{ and }} 
+is an expression that will be output to the final document. {% and %} denotes a control flow statement like 
+if and for. Unlike Python, blocks are denoted by start and end tags rather than indentation since static 
+text within a block could change indentation.
+
+
+g is automatically available in templates. Based on if g.user is set (from load_logged_in_user), 
+either the username and a log out link are displayed, or links to register and log in are displayed. 
+url_for() is also automatically available, and is used to generate URLs to views instead of writing 
+them out manually.
+
+
+After the page title, and before the content, the template loops over each message returned 
+by get_flashed_messages(). You used flash() in the views to show error messages, and this is the 
+code that will display them.
+
+There are three blocks defined here that will be overridden in the other templates:
+
+    {% block title %} will change the title displayed in the browser’s tab and window title.
+    {% block header %} is similar to title but will change the title displayed on the page.
+    {% block content %} is where the content of each page goes, such as the login form or a blog post.
