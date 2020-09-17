@@ -74,3 +74,6 @@ There are three blocks defined here that will be overridden in the other templat
     {% block title %} will change the title displayed in the browser’s tab and window title.
     {% block header %} is similar to title but will change the title displayed on the page.
     {% block content %} is where the content of each page goes, such as the login form or a blog post.
+
+
+MORE BLUEPRINTS
