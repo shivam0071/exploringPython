@@ -84,3 +84,25 @@ useful in some cases where the name of the module that needs to be imported is u
 is written (for example, for plugins or extensions to an application).
 
 ex - m1 = importlib.import_module('example.submodule')
+
+
+# 26th Oct 2020 6:15 PM
+CONTEXT MANAGERS
+
+    The with statement simplifies exception handling by encapsulating
+    standard uses of try/finally statements in so-called
+    context managers.
+
+    • Most commonly it is used to manage the safe acquisition and
+    release of system resources. Resources are acquired by the
+    with statement and released automatically when execution
+    leaves the with context.
+
+    • Using with effectively can help you avoid resource leaks and
+    make your code easier to read.
+
+ There are 2 ways of creating context managers
+ 1.) Class Based
+ 2.) Using a decorator - from contextlib import contextmanager
+
+
