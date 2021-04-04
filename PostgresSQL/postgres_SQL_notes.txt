@@ -1,0 +1,70 @@
+15 KEYWORDS
+
+1.) SELECT
+2.) FROM
+3.) WHERE
+4.) AND
+5.) OR
+6.) BETWEEN
+7.) IN
+8.) DISTINCT
+9.) ORDER BY
+10.) DESC
+11.) ASC
+12.) LIMIT
+13.) AS
+14.) JOIN ON
+15.) HAVING
+
+
+1 #  SELECTS
+
+Select * FROM some_table
+select col1, col2 FROM table
+
+Select col1, col2=col3 FROM table
+Select col1, col2*col3 FROM table
+
+
+2 # DISTINCT - Unique Rows
+Select Distinct col1,col2 from table
+
+3 # COUNT - Count the total rows
+Select COUNT(*) from table
+
+4 # DISTINCT + COUNT
+Select COUNT(DISTINCT col1) FROM table;
+
+
+
+# DATA TYPES
+DATE
+STRINGS
+NUMBERS
+
+
+5 # WHERE - use a single quote for strings and dates
+
+SELECT custName FROM table WHERE  custName = 'test1'
+SELECT custName FROM table WHERE  id > 10
+
+DATES -
+where orderDate = '1995-07-04'
+where orderDate > '1995-07-04'
+where orderDate >= '1995-07-04'
+
+6 # AND
+where a='test' AND b > 4
+
+7 # OR - returns everything thats true
+where a='test' OR b > 4
+       (2rows)      (3 rows)
+RESULT - 5 rows
+
+# NOT - WHERE NOT IN country = 'France'
+
+8 # BETWEEN -- shortcut to less than equal to and greater than equal to  price >= 10 OR price <= 50
+WHERE price BETWEEN 10 AND 50 (inclusive)
+
+9 # IN -- Instead of using many ORs we can use in
+WHERE id in (3,4,5,6,7);

@@ -77,3 +77,10 @@ There are three blocks defined here that will be overridden in the other templat
 
 
 MORE BLUEPRINTS
+
+
+
+4th April 2021
+QUERY STRINGS
+www.abc.com/?greeting=hello
+?greeting=hello is a query string
