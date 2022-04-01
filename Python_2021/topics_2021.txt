@@ -1,0 +1,81 @@
+Topics Asked in Interviews
+
+1.) Collection Module -- Done
+2.) Multi Threading -- Done
+3.) Multi Processing -- Done
+4.) Generator vs Iterator Yield -- Done
+5) Whats new in Python latest Versions (or the one you are using) -- Donish
+6.) REST APIs Methods and OPEN API,
+7.) AUTH and Authorization (OAuth)
+
+
+**************** Collection Module ****************
+# 1.) CHAIN MAP
+# A ChainMap class is provided for quickly linking a number of mappings so they can be treated as a single unit.
+# It is often much faster than creating a new dictionary and running multiple update() calls.
+
+from collections import ChainMap
+
+baseline = {'music': 'bach', 'art': 'rembrandt'}
+adjustments = {'art': 'van gogh', 'opera': 'carmen'}
+print(list(ChainMap(adjustments, baseline)))
+
+# 2.) Counter
+# 3.) Deque
+# 4.) defaultdict
+# 5.) from enum import Enum
+# 6.) ordereddict
+
+
+********************THREADING*****************************
+
+cooperative multitasking  -- not OS depended and are not interuptted, its where all the process should cooperate with each other to get the control (asyncio)
+preemptive multitasking -- OS dependent, the CPU is shared by halting a processing and giving CPU to other tasks and so on
+
+https://realpython.com/python-concurrency/
+https://towardsdatascience.com/a-better-way-for-asynchronous-programming-asyncio-over-multi-threading-3457d82b3295
+https://docs.python.org/3/library/concurrency.html
+https://medium.com/fintechexplained/advanced-python-concurrency-and-parallelism-82e378f26ced
+
+In Short
+Threads
+Use Threads when concurrency is required...that is IO/Network related tasks are there
+and use threads only when the wait time is less
+Creating threads needs more memory and there is an Overhead of GIL moving between threads
+
+ASYNCIO
+Asyncio is a co-routine which is a light weight thread
+Coroutines are a more generalized form of subroutines. Subroutines are entered at one point and exited at another point.
+Coroutines can be entered, exited, and resumed at many different points.
+Use asyncio when concurrency is required
+Can be used when IO/Network wait time is more
+
+# check the_generators_secret.py
+# Coroutines are functions that can be stopped and resumed while being run.
+# In Python, they are defined using the async def keyword. Much like generators,
+# they too use their own form of yield from which is await.
+# Before async and await were introduced in Python 3.5, we created coroutines in the exact same way generators were created
+# (with yield from instead of await).
+
+async def inner():
+    return 1
+
+async def outer():
+    await inner()
+Like every iterator or generator that implement the __iter__() method, coroutines implement __await__()
+which allows them to continue on every time await coro is called.
+
+The general concept of asyncio is that a single Python object, called the event loop, controls how and when each task gets run
+The event loop is aware of each task and knows what state it’s in. In reality, there are many states that tasks could be in,
+but for now let’s imagine a simplified event loop that just has two states.
+
+
+Process
+For Parallel processing, use it for CPU intensive tasks such as calculations, image/data processing etc
+each process has its own env, interpreter and GIL
+
+
+
+
+
+

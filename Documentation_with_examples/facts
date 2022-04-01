@@ -1,0 +1,5 @@
+https://www.youtube.com/watch?v=7lmCu8wz8ro&list=LL&index=3&t=2145s
+
+We can say that python is a protocol oriented language
+There is always some top level syntax, function --> underscore method
+ex - x() --> __call__()
